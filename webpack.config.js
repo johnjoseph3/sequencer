@@ -1,7 +1,8 @@
 module.exports = {
-	entry: "./app.js",
+	entry: ['./client/app.js'],
 	output: {
-		filename: "bundle.js"
+		path: 'public',
+		filename: '/bundle.js'
 	},
 	module: {
 		preLoaders: [
@@ -12,6 +13,7 @@ module.exports = {
 			}
 		],
 		loaders: [
+			{ test: /\.css$/, loader: "style-loader!css-loader" },
 			{
 				test: /\.es6$/,
 				exclude: /node_modules/,
@@ -22,6 +24,7 @@ module.exports = {
 			}
 		]
 	},
+	devtool: 'source-map',
 	resolve: {
 		extensions: ['', '.js', '.es6']
 	},
