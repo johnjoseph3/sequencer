@@ -1,7 +1,15 @@
-require("./style.css");
+import angular from 'angular';
+import uirouter from 'angular-ui-router';
 
-const app = angular.module('app',[]);
+let app = angular.module('app', [uirouter]);
 
-app.controller('mainController', ['$scope', function($scope) {
-	$scope.greeting = 'Hola!';
-}]);
+app.config(function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise('/home');
+
+	$stateProvider
+		.state('home', {
+			url: '/home',
+			template: require("html!./test.html")
+		});
+
+});
