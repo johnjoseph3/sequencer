@@ -1,3 +1,6 @@
+require('file?name=[name].[ext]!./index.html');
+require("./stylesheet.css");
+
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 

@@ -15,7 +15,7 @@ module.exports = {
 	module: {
 		preLoaders: [{test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
 		loaders: [
-			{ test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
+			{test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
 			{test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015' },
 		]
 	},
@@ -26,6 +26,6 @@ module.exports = {
 	},
 	plugins : [
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
-		new ExtractTextPlugin("[name].css"),
+		new ExtractTextPlugin("[name].css")
 	]
 }
