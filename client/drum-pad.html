@@ -1,4 +1,4 @@
 <div ng-controller="drumPad">
 	<h1>{{name}}</h1>
-	<audio ng-repeat="soundNumber in soundNumbers" controls src="{{getSound(soundNumber)}}" type="audio/mpeg"></audio>
+	<audio ng-repeat="soundFileIndex in soundFileIndices" controls src="{{getSound(soundFileIndex)}}" type="audio/wav"></audio>
 </div>
