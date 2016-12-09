@@ -1,6 +1,4 @@
 <div ng-controller="drumPad">
 	<h1>{{name}}</h1>
-	<audio controls src="{{getDrum()}}" type="audio/mpeg">
-		Your browser does not support the <code>audio</code> element.
-	</audio>
+	<audio ng-repeat="soundNumber in soundNumbers" controls src="{{getSound(soundNumber)}}" type="audio/mpeg"></audio>
 </div>
