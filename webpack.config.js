@@ -9,7 +9,7 @@ module.exports = {
 		vendor: ['angular']
 	},
 	output: {
-		path: "public",
+		path: "dist",
 		filename: 'app.bundle.js'
 	},
 	module: {
@@ -17,6 +17,7 @@ module.exports = {
 		loaders: [
 			{test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
 			{test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015' },
+			{ test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file" }
 		]
 	},
 	devServer: { inline: true },
