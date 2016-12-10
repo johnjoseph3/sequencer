@@ -22,3 +22,22 @@
 	width: 0;
 	height: 100%;
 }
+
+.columns {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.column {
+	flex: 1;
+}
+
+.sound-files {
+	display: flex;
+	flex-direction: column;
+}
+
+.sound-file {
+	flex: 1;
+}

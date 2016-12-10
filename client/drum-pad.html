@@ -1,13 +1,15 @@
 <div ng-controller="drumPad">
+	<label>BPM:</label>
+	<input type="text" ng-model="bpm"></input>
+	<button ng-click="startBeat()">Start Beat</button>
 
-	<div class="drum-pad-grid">
-		<div class="pad" ng-repeat="soundFileIndex in soundFileIndices">
-			<audio src="{{getSound(soundFileIndex)}}" type="audio/wav"></audio>
+	<div class="columns">
+		<div class="column" ng-repeat="soundFile in soundFiles">
+			<p>{{$index}}</p>
+			<div class="sound-files">
+				<button class="sound-file" ng-repeat="soundFile in soundFiles">Sound {{$index + 1}}</button>
+			</div>
 		</div>
 	</div>
-	<div class="time-bar">
-		<div class="time-indicator"></div>
-	</div>
-	<div class="seconds"></div>
-	<button ng-click="startBeat()">Start Beat</button>
+
 </div>
