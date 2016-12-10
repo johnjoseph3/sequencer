@@ -1,3 +1,24 @@
-h1 {
-	color: blue;
+.drum-pad-grid {
+	height: 100px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.pad {
+	flex: 1;
+	background: #dde8d5;
+	margin: 10px;
+}
+
+.time-bar {
+	height: 20px;
+	border: 1px solid black;
+	margin: 0 10px;
+	position: relative;
+}
+
+.time-indicator {
+	background: #dde8d5;
+	width: 0;
+	height: 100%;
 }
