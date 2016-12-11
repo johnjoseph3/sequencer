@@ -10,19 +10,6 @@
 	margin: 10px;
 }
 
-.time-bar {
-	height: 20px;
-	border: 1px solid black;
-	margin: 0 10px;
-	position: relative;
-}
-
-.time-indicator {
-	background: #dde8d5;
-	width: 0;
-	height: 100%;
-}
-
 .columns {
 	display: flex;
 	justify-content: space-between;
@@ -33,11 +20,16 @@
 	flex: 1;
 }
 
-.sound-files {
+.sounds {
 	display: flex;
 	flex-direction: column;
 }
 
-.sound-file {
+.sound {
 	flex: 1;
+}
+
+.active {
+	background: #cecece;
+	border: 0;
 }

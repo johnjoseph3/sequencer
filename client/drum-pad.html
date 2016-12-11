@@ -2,12 +2,13 @@
 	<label>BPM:</label>
 	<input type="text" ng-model="bpm"></input>
 	<button ng-click="startBeat()">Start Beat</button>
+	<button ng-click="isBeatPlaying = false">Stop Beat</button>
 
 	<div class="columns">
-		<div class="column" ng-repeat="soundFile in soundFiles">
+		<div class="column" ng-repeat="sound in sounds" ng-init="beatIndex = $index">
 			<p>{{$index}}</p>
-			<div class="sound-files">
-				<button class="sound-file" ng-repeat="soundFile in soundFiles">Sound {{$index + 1}}</button>
+			<div class="sounds">
+				<button class="sound" ng-repeat="sound in sounds" ng-class="{active: beat[beatIndex] === sound}" ng-click="addSoundToBeat(sound, beatIndex)">Sound {{$index + 1}}</button>
 			</div>
 		</div>
 	</div>
