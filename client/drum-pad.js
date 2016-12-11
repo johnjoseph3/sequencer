@@ -1,8 +1,9 @@
 angular.module('app').controller('drumPad', ['$scope', ($scope) => {
 	$scope.bpm = 120;
+	let soundIndices = ["01", "02", "03", "04", "05", "06", "07", "08"];
 	// FIXME Find a more dynamic way to retrieve files.
 	$scope.sounds = [];
-	let soundIndices = ["01", "02", "03", "04", "05", "06", "07", "08"];
+
 	for(let soundIndex of soundIndices) {
 		$scope.sounds.push(require(`../public/AB_Clap-${soundIndex}.wav`));
 	}
@@ -22,11 +23,17 @@ angular.module('app').controller('drumPad', ['$scope', ($scope) => {
 		let interval = setInterval(function() {
 			if($scope.isBeatPlaying) {
 				if(currentSoundindex < $scope.beat.length){
-					new Audio($scope.beat[currentSoundindex]).play();
+					let beat = $scope.beat[currentSoundindex];
+					if(beat !== null) {
+						new Audio(beat).play();
+					}
 					currentSoundindex++;
 				}	else {
+					let beat = $scope.beat[currentSoundindex];
 					currentSoundindex = 0;
-					new Audio($scope.beat[currentSoundindex]).play();
+					if(beat !== null) {
+						new Audio(beat).play();
+					}
 					currentSoundindex++;
 				}
 			} else {

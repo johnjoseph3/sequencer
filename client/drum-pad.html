@@ -5,10 +5,10 @@
 	<button ng-click="isBeatPlaying = false">Stop Beat</button>
 
 	<div class="columns">
-		<div class="column" ng-repeat="sound in sounds" ng-init="beatIndex = $index">
-			<p>{{$index}}</p>
+		<div class="column" ng-repeat="sound in sounds track by $index" ng-init="beatIndex = $index">
+			<button ng-class="{active: beat[beatIndex] === null}" ng-click="addSoundToBeat(null, beatIndex)">Break</button>
 			<div class="sounds">
-				<button class="sound" ng-repeat="sound in sounds" ng-class="{active: beat[beatIndex] === sound}" ng-click="addSoundToBeat(sound, beatIndex)">Sound {{$index + 1}}</button>
+				<button class="sound" ng-repeat="sound in sounds track by $index" ng-class="{active: beat[beatIndex] === sound}" ng-click="addSoundToBeat(sound, beatIndex)">Sound {{$index + 1}}</button>
 			</div>
 		</div>
 	</div>
