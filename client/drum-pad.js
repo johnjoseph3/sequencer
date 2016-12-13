@@ -1,3 +1,5 @@
+import metronomeControls from "./web-audio-api.js";
+let metronomeControlFunction = metronomeControls();
 angular.module('app').controller('drumPad', ['$scope', ($scope) => {
 	$scope.bpm = 120;
 	let soundIndices = ["01", "02", "03", "04", "05", "06", "07", "08"];
@@ -7,6 +9,10 @@ angular.module('app').controller('drumPad', ['$scope', ($scope) => {
 	for(let soundIndex of soundIndices) {
 		$scope.sounds.push(require(`../public/AB_Clap-${soundIndex}.wav`));
 	}
+
+	$scope.playMetronome = function(){metronomeControlFunction.startMetronome();};
+
+	$scope.stopMetronome = function(){metronomeControlFunction.stopMetronome();};
 
 	$scope.beat = [];
 
