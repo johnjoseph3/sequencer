@@ -5,4 +5,4 @@ require('file?name=[name].[ext]!./index.html');
 require('./stylesheet.css');
 require('./routes.js');
 require('./drum-pad.js');
-require('./web-audio-api.js');
+// require('./web-audio-api.js');
