@@ -16,8 +16,9 @@ module.exports = {
 		preLoaders: [{test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
 		loaders: [
 			{test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
-			{test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015' },
-			{ test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file" }
+			{test: /\.less$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")},
+			{test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015'},
+			{test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file"}
 		]
 	},
 	devServer: { inline: true },
