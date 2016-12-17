@@ -26,7 +26,11 @@ angular.module('app').service('Sequencer', function() {
 			getAudioBuffer('http://localhost:8080/1.wav'),
 			getAudioBuffer('http://localhost:8080/2.wav'),
 			getAudioBuffer('http://localhost:8080/3.wav'),
-			getAudioBuffer('http://localhost:8080/4.wav')
+			getAudioBuffer('http://localhost:8080/4.wav'),
+			getAudioBuffer('http://localhost:8080/5.wav'),
+			getAudioBuffer('http://localhost:8080/6.wav'),
+			getAudioBuffer('http://localhost:8080/7.wav'),
+			getAudioBuffer('http://localhost:8080/8.wav')
 		]);
 	};
 
@@ -78,7 +82,7 @@ angular.module('app').service('Sequencer', function() {
 
 		while (noteTime < currentTime + 0.200) {
 			let contextPlayTime = noteTime + startTime;
-			//Insert draw stuff here
+
 			if(beat[rhythmIndex]) {
 				playSound(beat[rhythmIndex]);
 			}
@@ -88,7 +92,6 @@ angular.module('app').service('Sequencer', function() {
 	}
 
 	function advanceNote() {
-		console.log(tempo);
 		let secondsPerBeat = 60.0 / tempo;
 
 		rhythmIndex++;

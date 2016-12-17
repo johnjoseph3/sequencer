@@ -1,0 +1,36 @@
+.grid {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	.column {
+		flex: 1;
+	}
+}
+
+.sound-icons-column {
+	flex: 0.5;
+	.icons {
+		display: flex;
+		flex-direction: column;
+		.icon {
+			flex: 1;
+			margin: 1px;
+			height: 35px;
+		}
+	}
+}
+
+.sounds {
+	display: flex;
+	flex-direction: column;
+	.sound {
+		flex: 1;
+		background: red;
+		height: 35px;
+		margin: 1px;
+		&.active {
+			background: #cecece;
+			border: 0;
+		}
+	}
+}
