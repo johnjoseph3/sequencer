@@ -9,7 +9,13 @@
 		</div>
 		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
 			<div class="sounds">
-				<div class="sound" ng-class="{active: sound == beat[beatIndex]}" ng-repeat="sound in sounds track by $index" ng-click="updateBeat(sound, beatIndex)"></div>
+				<div
+					class="sound"
+					data-beatindex="{{beatIndex}}"
+					ng-class="{active: sound === beat[beatIndex]}"
+					ng-repeat="sound in sounds track by $index"
+					ng-click="updateBeat(sound, beatIndex)">
+				</div>
 			</div>
 		</div>
 	</div>

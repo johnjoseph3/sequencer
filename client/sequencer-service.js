@@ -5,6 +5,7 @@ angular.module('app').service('Sequencer', function() {
 	let beat = [];
 	let tempo = 120;
 	let loopLength = 12;
+	const self = this;
 
 	function getAudioBuffer(soundFileUrl) {
 		let promise = new Promise(function(resolve, reject) {
@@ -34,6 +35,10 @@ angular.module('app').service('Sequencer', function() {
 		]);
 	};
 
+	this.getTempo = function() {
+		return tempo;
+	};
+
 	this.updateBeat = function(sound, beatIndex) {
 		if (beat[beatIndex] === sound) {
 			beat[beatIndex] = undefined;
@@ -41,10 +46,6 @@ angular.module('app').service('Sequencer', function() {
 			beat[beatIndex] = sound;
 		}
 		return beat;
-	};
-
-	this.getTempo = function() {
-		return tempo;
 	};
 
 	this.updateTempo = function(newTempo) {
@@ -62,6 +63,7 @@ angular.module('app').service('Sequencer', function() {
 		noteTime = 0.0;
 		startTime = audioContext.currentTime + 0.2;
 		rhythmIndex = 0;
+		self.rhythmIndex = rhythmIndex;
 		schedule();
 	};
 
@@ -76,6 +78,13 @@ angular.module('app').service('Sequencer', function() {
 		source.start(0);
 	}
 
+	const highlightCurrentlyPlayingSounds = function(rhythmIndex) {
+		let lastPlayedSounds = angular.element(document.querySelectorAll(`[data-beatIndex='${(rhythmIndex + loopLength - 1) % loopLength}']`));
+		let currentlyPlayingSounds = angular.element(document.querySelectorAll(`[data-beatIndex='${rhythmIndex}']`));
+		lastPlayedSounds.removeClass('playing');
+		currentlyPlayingSounds.addClass('playing');
+	};
+
 	function schedule() {
 		let currentTime = audioContext.currentTime;
 		currentTime -= startTime;
@@ -86,6 +95,9 @@ angular.module('app').service('Sequencer', function() {
 			if(beat[rhythmIndex]) {
 				playSound(beat[rhythmIndex]);
 			}
+
+			highlightCurrentlyPlayingSounds(rhythmIndex);
+
 			advanceNote();
 		}
 		requestId = requestAnimationFrame(schedule, 0);
@@ -95,6 +107,7 @@ angular.module('app').service('Sequencer', function() {
 		let secondsPerBeat = 60.0 / tempo;
 
 		rhythmIndex++;
+		self.rhythmIndex = rhythmIndex;
 		if (rhythmIndex == loopLength) {
 			rhythmIndex = 0;
 		}

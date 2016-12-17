@@ -2,6 +2,8 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 
 	$scope.beat = [];
 
+	$scope.sequencer = Sequencer;
+
 	Sequencer.getSounds()
 		.then(function(sounds){
 			$scope.sounds = sounds;
