@@ -8,6 +8,8 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 			$scope.$apply();
 	});
 
+	$scope.beatIsPlaying = false;
+
 	$scope.updateBeat = (sound, beatIndex) => {
 		$scope.beat = Sequencer.updateBeat(sound, beatIndex);
 	};
@@ -20,7 +22,13 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 
 	$scope.numberOfSteps = 12;
 
-	$scope.start = () => Sequencer.start();
-	$scope.stop = () => Sequencer.stop();
+	$scope.startOrStopBeat = () => {
+		if($scope.beatIsPlaying) {
+			Sequencer.stop();
+		} else {
+			Sequencer.start();
+		}
+		$scope.beatIsPlaying = !$scope.beatIsPlaying;
+	};
 
 }]);
