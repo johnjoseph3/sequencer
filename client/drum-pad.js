@@ -1,13 +1,15 @@
 angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Sequencer) => {
 
+	$scope.beat = [];
+
 	Sequencer.getSounds()
 		.then(function(sounds){
 			$scope.sounds = sounds;
 			$scope.$apply();
 	});
 
-	$scope.addSoundToBeat = (sound, beatIndex) => {
-		Sequencer.addSoundToBeat(sound, beatIndex);
+	$scope.updateBeat = (sound, beatIndex) => {
+		$scope.beat = Sequencer.updateBeat(sound, beatIndex);
 	};
 
 	$scope.numberOfSteps = 12;

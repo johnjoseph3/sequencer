@@ -6,7 +6,9 @@
 		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
 			<div>{{$index + 1}}</div>
 			<div class="sounds">
-				<button class="sound" ng-repeat="sound in sounds track by $index" ng-click="addSoundToBeat(sound, beatIndex)">Sound {{$index + 1}}</button>
+				<button class="sound" ng-class="{active: sound == beat[beatIndex]}" ng-repeat="sound in sounds track by $index" ng-click="updateBeat(sound, beatIndex)">
+					Sound {{$index + 1}}
+				</button>
 			</div>
 		</div>
 	</div>

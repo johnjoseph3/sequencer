@@ -28,9 +28,13 @@ angular.module('app').service('Sequencer', function() {
 		]);
 	};
 
-	this.addSoundToBeat = function(sound, beatIndex) {
-		beat[beatIndex] = sound;
-		console.log(beat);
+	this.updateBeat = function(sound, beatIndex) {
+		if (beat[beatIndex] === sound) {
+			beat[beatIndex] = undefined;
+		} else {
+			beat[beatIndex] = sound;
+		}
+		return beat;
 	};
 
 	this.playSound = function(buffer) {
@@ -65,20 +69,16 @@ angular.module('app').service('Sequencer', function() {
 
 		while (noteTime < currentTime + 0.200) {
 			let contextPlayTime = noteTime + startTime;
-
 			//Insert draw stuff here
 			if(beat[rhythmIndex]) {
 				playSound(beat[rhythmIndex]);
 			}
-
 			advanceNote();
-
 		}
 		requestId = requestAnimationFrame(schedule, 0);
 	}
 
 	function advanceNote() {
-		// Setting tempo to 60 BPM just for now
 		let tempo = 30.0;
 		let secondsPerBeat = 60.0 / tempo;
 
@@ -86,8 +86,6 @@ angular.module('app').service('Sequencer', function() {
 		if (rhythmIndex == loopLength) {
 			rhythmIndex = 0;
 		}
-
-		//0.25 because each square is a 16th note
 		noteTime += 0.25 * secondsPerBeat;
 	}
 
