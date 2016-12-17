@@ -1,10 +1,10 @@
 angular.module('app').service('Sequencer', function() {
 
-	this.audioContext = new AudioContext();
+	const audioContext = new AudioContext();
+	let noteTime, startTime, rhythmIndex, loopLength, timeoutId, requestId, source, sounds;
 
-	this.getAudioBuffer = (soundFileUrl) => {
-		let audioContext = this.audioContext;
-		let promise = new Promise((resolve, reject) => {
+	function getAudioBuffer(soundFileUrl) {
+		let promise = new Promise(function(resolve, reject) {
 			let request = new XMLHttpRequest();
 			request.open('get', soundFileUrl, true);
 			request.responseType = 'arraybuffer';
@@ -16,6 +16,75 @@ angular.module('app').service('Sequencer', function() {
 			request.send();
 		});
 		return promise;
+	}
+
+	Promise.all([
+		getAudioBuffer('http://localhost:8080/1.wav'),
+		getAudioBuffer('http://localhost:8080/2.wav'),
+		getAudioBuffer('http://localhost:8080/3.wav'),
+		getAudioBuffer('http://localhost:8080/4.wav')
+	])
+	.then(buffers => {
+		sounds = buffers;
+		console.log("Sounds loaded");
+	});
+
+	this.playSound = function(buffer) {
+		let source = audioContext.createBufferSource();
+		source.buffer = buffer;
+		source.connect(audioContext.destination);
+		source.start(0);
 	};
+
+	this.start = function(){
+		noteTime = 0.0;
+		startTime = audioContext.currentTime + 0.2;
+		rhythmIndex = 0;
+		loopLength = 12;
+		schedule();
+	};
+
+	this.stop = function() {
+		cancelAnimationFrame(requestId);
+	};
+
+	function playSound(sound) {
+		source = audioContext.createBufferSource();
+		source.buffer = sound;                    // tell the source which sound to play
+		source.connect(audioContext.destination);       // connect source to context's destination (the speakers)
+		source.start(0);
+	}
+
+	function schedule() {
+		let currentTime = audioContext.currentTime;
+		currentTime -= startTime;
+
+		while (noteTime < currentTime + 0.200) {
+			let contextPlayTime = noteTime + startTime;
+
+			//Insert playing notes here
+
+			//Insert draw stuff here
+			playSound(sounds[0]);
+
+			advanceNote();
+
+		}
+		requestId = requestAnimationFrame(schedule, 0);
+	}
+
+	function advanceNote() {
+		// Setting tempo to 60 BPM just for now
+		let tempo = 30.0;
+		let secondsPerBeat = 60.0 / tempo;
+
+		rhythmIndex++;
+		if (rhythmIndex == loopLength) {
+			rhythmIndex = 0;
+		}
+
+		//0.25 because each square is a 16th note
+		noteTime += 0.25 * secondsPerBeat;
+	}
 
 });
