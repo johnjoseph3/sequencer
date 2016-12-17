@@ -1,31 +1,22 @@
-angular.module('app').controller('drumPad', ['$scope', ($scope) => {
-	const audioContext = new AudioContext();
+angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Sequencer) => {
 
-	const getAudioBuffer = (soundFileUrl) => {
-		$scope.isLoadingSongs = true;
-		let promise = new Promise((resolve, reject) => {
-			let request = new XMLHttpRequest();
-			request.open('get', soundFileUrl, true);
-			request.responseType = 'arraybuffer';
-			request.onload = function(){
-				audioContext.decodeAudioData(request.response, function(buffer){
-					resolve(buffer);
-				}, function(){reject("Failed to load song");});
-			};
-			request.send();
+	const getSounds = () => {
+		console.log("Loading sounds");
+		$scope.isLoadingSounds = true;
+		Promise.all([
+			Sequencer.getAudioBuffer('http://localhost:8080/1.wav'),
+			Sequencer.getAudioBuffer('http://localhost:8080/2.wav'),
+			Sequencer.getAudioBuffer('http://localhost:8080/3.wav'),
+			Sequencer.getAudioBuffer('http://localhost:8080/4.wav')
+		])
+		.then(buffers => {
+			$scope.sounds = buffers;
+			$scope.isLoadingSounds = false;
+			console.log("Sounds loaded");
 		});
-		return promise;
 	};
 
-	Promise.all([
-		getAudioBuffer('http://localhost:8080/1.wav'),
-		getAudioBuffer('http://localhost:8080/2.wav'),
-		getAudioBuffer('http://localhost:8080/3.wav'),
-		getAudioBuffer('http://localhost:8080/4.wav')
-	])
-	.then(buffers => {
-		console.log(buffers);
-		$scope.isLoadingSongs = false;
-	});
+	getSounds();
+
 
 }]);
