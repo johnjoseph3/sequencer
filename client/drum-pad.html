@@ -1,6 +1,6 @@
 <div ng-controller="drumPad">
 	<label>BPM:</label>
-	<input type="text" ng-model="bpm"></input>
+	<input type="text" ng-model="tempo"></input>
 
 	<div class="columns">
 		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">

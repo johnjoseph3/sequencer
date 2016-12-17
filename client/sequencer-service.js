@@ -1,8 +1,10 @@
 angular.module('app').service('Sequencer', function() {
 
 	const audioContext = new AudioContext();
-	let noteTime, startTime, rhythmIndex, loopLength, timeoutId, requestId, source;
+	let noteTime, startTime, rhythmIndex, timeoutId, requestId, source;
 	let beat = [];
+	let tempo = 120;
+	let loopLength = 12;
 
 	function getAudioBuffer(soundFileUrl) {
 		let promise = new Promise(function(resolve, reject) {
@@ -37,6 +39,14 @@ angular.module('app').service('Sequencer', function() {
 		return beat;
 	};
 
+	this.getTempo = function() {
+		return tempo;
+	};
+
+	this.updateTempo = function(newTempo) {
+		tempo = parseInt(newTempo);
+	};
+
 	this.playSound = function(buffer) {
 		let source = audioContext.createBufferSource();
 		source.buffer = buffer;
@@ -48,7 +58,6 @@ angular.module('app').service('Sequencer', function() {
 		noteTime = 0.0;
 		startTime = audioContext.currentTime + 0.2;
 		rhythmIndex = 0;
-		loopLength = 12;
 		schedule();
 	};
 
@@ -79,7 +88,7 @@ angular.module('app').service('Sequencer', function() {
 	}
 
 	function advanceNote() {
-		let tempo = 30.0;
+		console.log(tempo);
 		let secondsPerBeat = 60.0 / tempo;
 
 		rhythmIndex++;
