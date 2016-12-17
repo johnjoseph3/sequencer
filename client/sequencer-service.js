@@ -1,7 +1,8 @@
 angular.module('app').service('Sequencer', function() {
 
 	const audioContext = new AudioContext();
-	let noteTime, startTime, rhythmIndex, loopLength, timeoutId, requestId, source, sounds;
+	let noteTime, startTime, rhythmIndex, loopLength, timeoutId, requestId, source;
+	let beat = [];
 
 	function getAudioBuffer(soundFileUrl) {
 		let promise = new Promise(function(resolve, reject) {
@@ -18,16 +19,19 @@ angular.module('app').service('Sequencer', function() {
 		return promise;
 	}
 
-	Promise.all([
-		getAudioBuffer('http://localhost:8080/1.wav'),
-		getAudioBuffer('http://localhost:8080/2.wav'),
-		getAudioBuffer('http://localhost:8080/3.wav'),
-		getAudioBuffer('http://localhost:8080/4.wav')
-	])
-	.then(buffers => {
-		sounds = buffers;
-		console.log("Sounds loaded");
-	});
+	this.getSounds = function() {
+		return Promise.all([
+			getAudioBuffer('http://localhost:8080/1.wav'),
+			getAudioBuffer('http://localhost:8080/2.wav'),
+			getAudioBuffer('http://localhost:8080/3.wav'),
+			getAudioBuffer('http://localhost:8080/4.wav')
+		]);
+	};
+
+	this.addSoundToBeat = function(sound, beatIndex) {
+		beat[beatIndex] = sound;
+		console.log(beat);
+	};
 
 	this.playSound = function(buffer) {
 		let source = audioContext.createBufferSource();
@@ -50,8 +54,8 @@ angular.module('app').service('Sequencer', function() {
 
 	function playSound(sound) {
 		source = audioContext.createBufferSource();
-		source.buffer = sound;                    // tell the source which sound to play
-		source.connect(audioContext.destination);       // connect source to context's destination (the speakers)
+		source.buffer = sound;
+		source.connect(audioContext.destination);
 		source.start(0);
 	}
 
@@ -62,10 +66,10 @@ angular.module('app').service('Sequencer', function() {
 		while (noteTime < currentTime + 0.200) {
 			let contextPlayTime = noteTime + startTime;
 
-			//Insert playing notes here
-
 			//Insert draw stuff here
-			playSound(sounds[0]);
+			if(beat[rhythmIndex]) {
+				playSound(beat[rhythmIndex]);
+			}
 
 			advanceNote();
 

@@ -1,14 +1,12 @@
 <div ng-controller="drumPad">
 	<label>BPM:</label>
 	<input type="text" ng-model="bpm"></input>
-	<button ng-click="startBeat()">Start Beat</button>
-	<button ng-click="isBeatPlaying = false">Stop Beat</button>
 
 	<div class="columns">
-		<div class="column" ng-repeat="sound in sounds track by $index" ng-init="beatIndex = $index">
-			<button ng-class="{active: beat[beatIndex] === null}" ng-click="addSoundToBeat(null, beatIndex)">Break</button>
+		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
+			<div>{{$index + 1}}</div>
 			<div class="sounds">
-				<button class="sound" ng-repeat="sound in sounds track by $index" ng-class="{active: beat[beatIndex] === sound}" ng-click="addSoundToBeat(sound, beatIndex)">Sound {{$index + 1}}</button>
+				<button class="sound" ng-repeat="sound in sounds track by $index" ng-click="addSoundToBeat(sound, beatIndex)">Sound {{$index + 1}}</button>
 			</div>
 		</div>
 	</div>
