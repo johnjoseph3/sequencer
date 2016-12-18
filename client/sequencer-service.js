@@ -78,6 +78,7 @@ angular.module('app').service('Sequencer', function() {
 
 	this.stop = function() {
 		cancelAnimationFrame(requestId);
+		angular.element(document.querySelectorAll(".sound")).removeClass('current-beat');
 	};
 
 	function playSound(sound) {
