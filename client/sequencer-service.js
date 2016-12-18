@@ -79,10 +79,17 @@ angular.module('app').service('Sequencer', function() {
 	}
 
 	const highlightCurrentlyPlayingSounds = function(rhythmIndex) {
-		let lastPlayedSounds = angular.element(document.querySelectorAll(`[data-beatIndex='${(rhythmIndex + loopLength - 1) % loopLength}']`));
-		let currentlyPlayingSounds = angular.element(document.querySelectorAll(`[data-beatIndex='${rhythmIndex}']`));
-		lastPlayedSounds.removeClass('playing');
-		currentlyPlayingSounds.addClass('playing');
+		let soundsInLastBeat = angular.element(document.querySelectorAll(`[data-beatIndex='${(rhythmIndex + loopLength - 1) % loopLength}']`));
+		let soundsInCurrentBeat = angular.element(document.querySelectorAll(`[data-beatIndex='${rhythmIndex}']`));
+
+		soundsInCurrentBeat.addClass('current-beat');
+		angular.forEach(soundsInCurrentBeat, function(sound) {
+			if(angular.element(sound).hasClass('active')) {
+				console.log('found');
+				angular.element(sound).addClass('playing');
+			}
+		});
+		soundsInLastBeat.removeClass('current-beat playing');
 	};
 
 	function schedule() {
