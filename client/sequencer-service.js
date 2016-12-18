@@ -2,7 +2,7 @@ angular.module('app').service('Sequencer', function() {
 
 	const audioContext = new AudioContext();
 	let noteTime, startTime, rhythmIndex, timeoutId, requestId, source;
-	let beat = [];
+	let pattern = [[],[],[],[],[],[],[],[],[],[],[],[]];
 	let tempo = 120;
 	let loopLength = 12;
 	const self = this;
@@ -39,13 +39,22 @@ angular.module('app').service('Sequencer', function() {
 		return tempo;
 	};
 
+	this.getPattern = function() {
+		return pattern;
+	};
+
 	this.updateBeat = function(sound, beatIndex) {
-		if (beat[beatIndex] === sound) {
-			beat[beatIndex] = undefined;
+
+		let soundsAtBeatIndex = pattern[beatIndex];
+		let soundInBeatIndex = soundsAtBeatIndex.find(soundInBeatIndex => soundInBeatIndex === sound);
+
+		if(soundInBeatIndex) {
+			pattern[beatIndex] = soundsAtBeatIndex.filter(existingSound => existingSound != sound);
 		} else {
-			beat[beatIndex] = sound;
+			pattern[beatIndex].push(sound);
 		}
-		return beat;
+
+		return pattern;
 	};
 
 	this.updateTempo = function(newTempo) {
@@ -85,7 +94,6 @@ angular.module('app').service('Sequencer', function() {
 		soundsInCurrentBeat.addClass('current-beat');
 		angular.forEach(soundsInCurrentBeat, function(sound) {
 			if(angular.element(sound).hasClass('active')) {
-				console.log('found');
 				angular.element(sound).addClass('playing');
 			}
 		});
@@ -98,9 +106,12 @@ angular.module('app').service('Sequencer', function() {
 
 		while (noteTime < currentTime + 0.200) {
 			let contextPlayTime = noteTime + startTime;
+			let sounds = pattern[rhythmIndex];
 
-			if(beat[rhythmIndex]) {
-				playSound(beat[rhythmIndex]);
+			if (sounds.length > 0) {
+				for(let sound of sounds) {
+					playSound(sound);
+				}
 			}
 
 			highlightCurrentlyPlayingSounds(rhythmIndex);

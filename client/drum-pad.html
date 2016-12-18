@@ -12,7 +12,7 @@
 				<div
 					class="sound"
 					data-beatindex="{{beatIndex}}"
-					ng-class="{active: sound === beat[beatIndex]}"
+					ng-class="{active: isSoundInBeat(sound, pattern[beatIndex])}"
 					ng-repeat="sound in sounds track by $index"
 					ng-click="updateBeat(sound, beatIndex)">
 				</div>
