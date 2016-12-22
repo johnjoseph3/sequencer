@@ -4,7 +4,7 @@
 	<div class="grid">
 		<div class="sound-icons-column">
 			<div class="icons">
-				<div class="icon" ng-repeat="sound in sounds track by $index">{{$index + 1}}</div>
+				<div class="icon icon-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
 			</div>
 		</div>
 		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
