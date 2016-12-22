@@ -10,7 +10,7 @@
 		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
 			<div class="sounds">
 				<div
-					class="sound"
+					class="sound row-{{$index}}"
 					data-beatindex="{{beatIndex}}"
 					ng-class="{active: isSoundInBeat(sound, pattern[beatIndex])}"
 					ng-repeat="sound in sounds track by $index"

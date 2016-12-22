@@ -1,3 +1,18 @@
+@kickColor: #44AE43;
+@snareColor: #FB004A;
+@closedHatColor: #FC7F08;
+@openHatColor: #FFFB4B;
+@tomsColor: #29C7DE;
+@percussionColor: #D200FF;
+@fxColor: #2087FE;
+@synthColor: #C1161F;
+
+@colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
+
+body {
+	background: #101012;
+}
+
 .grid {
 	display: flex;
 	justify-content: space-between;
@@ -12,6 +27,7 @@
 	.icons {
 		display: flex;
 		flex-direction: column;
+		color: white;
 		.icon {
 			flex: 1;
 			margin: 1px;
@@ -25,18 +41,40 @@
 	flex-direction: column;
 	.sound {
 		flex: 1;
-		background: red;
+		background: #292929;
 		height: 35px;
 		margin: 1px;
 		&.current-beat {
-			background: green;
+			background: #434547;
 		}
 		&.active {
-			background: #cecece;
-			border: 0;
-		}
-		&.playing {
-			background: black;
+			&.row-0 {
+				background: @kickColor;
+			}
+			&.row-1 {
+				background: @snareColor;
+			}
+			&.row-2 {
+				background: @closedHatColor;
+			}
+			&.row-3 {
+				background: @openHatColor;
+			}
+			&.row-4 {
+				background: @tomsColor;
+			}
+			&.row-5 {
+				background: @percussionColor;
+			}
+			&.row-6 {
+				background: @fxColor;
+			}
+			&.row-7 {
+				background: @synthColor;
+			}
+			&.playing {
+				background: white;
+			}
 		}
 	}
 }
