@@ -6,11 +6,21 @@
 @percussionColor: #D200FF;
 @fxColor: #2087FE;
 @synthColor: #C1161F;
+@backgroundColor: #101012;
 
 @colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
 
 body {
-	background: #101012;
+	background: @backgroundColor;
+}
+
+label {
+	color: white;
+}
+.tempo {
+	color: white;
+	background: @backgroundColor;
+	border: 0;
 }
 
 .grid {
