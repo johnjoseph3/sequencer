@@ -1,0 +1,21 @@
+.columns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.columns .column {
+  flex: 1;
+}
+.sounds {
+  display: flex;
+  flex-direction: column;
+}
+.sounds .sound {
+  flex: 1;
+}
+.sounds .sound.active {
+  background: #cecece;
+  border: 0;
+}
+
+/*# sourceMappingURL=app.css.map*/
