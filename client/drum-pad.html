@@ -1,6 +1,13 @@
 <div ng-controller="drumPad">
-	<label>BPM:</label>
-	<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
+	<div class="controls">
+		<img
+			class="play-pause-button"
+			ng-src="{{beatIsPlaying ? 'pause-button.svg' : 'play-button.svg'}}"
+			ng-click="startOrStopBeat()"
+			alt="Play or pause button.">
+		<label>BPM:</label>
+		<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
+	</div>
 	<div class="grid">
 		<div class="sound-icons-column">
 			<div class="icons">
@@ -19,6 +26,4 @@
 			</div>
 		</div>
 	</div>
-	<button ng-click="startOrStopBeat()">{{beatIsPlaying ? 'Stop' : 'Play' }}</button>
-
 </div>
