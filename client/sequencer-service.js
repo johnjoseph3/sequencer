@@ -1,4 +1,7 @@
-angular.module('app').service('Sequencer', function() {
+angular.module('app').service('Sequencer', function($location) {
+
+	const location = $location;
+	const url = `${location.$$protocol}://${location.$$host}:${location.$$port}`;
 
 	const audioContext = new AudioContext();
 	let noteTime, startTime, rhythmIndex, timeoutId, requestId, source;
@@ -24,14 +27,14 @@ angular.module('app').service('Sequencer', function() {
 
 	this.getSounds = function() {
 		return Promise.all([
-			getAudioBuffer('http://localhost:8080/1.wav'),
-			getAudioBuffer('http://localhost:8080/2.wav'),
-			getAudioBuffer('http://localhost:8080/3.wav'),
-			getAudioBuffer('http://localhost:8080/4.wav'),
-			getAudioBuffer('http://localhost:8080/5.wav'),
-			getAudioBuffer('http://localhost:8080/6.wav'),
-			getAudioBuffer('http://localhost:8080/7.wav'),
-			getAudioBuffer('http://localhost:8080/8.wav')
+			getAudioBuffer(`${url}/1.wav`),
+			getAudioBuffer(`${url}/2.wav`),
+			getAudioBuffer(`${url}/3.wav`),
+			getAudioBuffer(`${url}/4.wav`),
+			getAudioBuffer(`${url}/5.wav`),
+			getAudioBuffer(`${url}/6.wav`),
+			getAudioBuffer(`${url}/7.wav`),
+			getAudioBuffer(`${url}/8.wav`)
 		]);
 	};
 

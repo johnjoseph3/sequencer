@@ -2,7 +2,7 @@
 	<div class="controls">
 		<img
 			class="play-pause-button"
-			ng-src="{{beatIsPlaying ? 'pause-button.svg' : 'play-button.svg'}}"
+			ng-class="beatIsPlaying ? 'pause' : 'play'"
 			ng-click="startOrStopBeat()"
 			alt="Play or pause button.">
 		<label>BPM:</label>

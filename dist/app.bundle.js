@@ -22,10 +22,9 @@ webpackJsonp([0],[
 	// http://patternsketch.com/
 	
 	__webpack_require__(3);
-	__webpack_require__(4);
-	__webpack_require__(8);
-	__webpack_require__(10);
-	__webpack_require__(11);
+	__webpack_require__(17);
+	__webpack_require__(19);
+	__webpack_require__(20);
 
 /***/ },
 /* 2 */
@@ -4643,21 +4642,25 @@ webpackJsonp([0],[
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "index.html";
-
-/***/ },
-/* 4 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 4 */,
 /* 5 */,
 /* 6 */,
 /* 7 */,
-/* 8 */
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4666,23 +4669,26 @@ webpackJsonp([0],[
 		$urlRouterProvider.otherwise('/home');
 		$stateProvider.state('home', {
 			url: '/home',
-			template: __webpack_require__(9)
+			template: __webpack_require__(18)
 		});
 	});
 
 /***/ },
-/* 9 */
+/* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "<div ng-controller=\"drumPad\">\n\t<label>BPM:</label>\n\t<input type=\"number\" ng-model=\"tempo\"></input>\n\t<div class=\"columns\">\n\t\t<div class=\"column\" ng-repeat=\"step in [].constructor(numberOfSteps) track by $index\" ng-init=\"beatIndex = $index\">\n\t\t\t<div>{{$index + 1}}</div>\n\t\t\t<div class=\"sounds\">\n\t\t\t\t<button class=\"sound\" ng-class=\"{active: sound == beat[beatIndex]}\" ng-repeat=\"sound in sounds track by $index\" ng-click=\"updateBeat(sound, beatIndex)\">\n\t\t\t\t\tSound {{$index + 1}}\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<button ng-click=\"startOrStopBeat()\">{{beatIsPlaying ? 'Stop' : 'Play' }}</button>\n\n</div>\n";
+	module.exports = "<div ng-controller=\"drumPad\">\n\t<div class=\"controls\">\n\t\t<img\n\t\t\tclass=\"play-pause-button\"\n\t\t\tng-class=\"beatIsPlaying ? 'pause' : 'play'\"\n\t\t\tng-click=\"startOrStopBeat()\"\n\t\t\talt=\"Play or pause button.\">\n\t\t<label>BPM:</label>\n\t\t<input type=\"number\" class=\"tempo\" ng-model=\"tempo\" min=\"60\" max=\"240\"></input>\n\t</div>\n\t<div class=\"grid\">\n\t\t<div class=\"sound-icons-column\">\n\t\t\t<div class=\"icons\">\n\t\t\t\t<div class=\"icon instrument-icon-{{$index}}\" ng-repeat=\"sound in sounds track by $index\"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"column\" ng-repeat=\"step in [].constructor(numberOfSteps) track by $index\" ng-init=\"beatIndex = $index\">\n\t\t\t<div class=\"sounds\">\n\t\t\t\t<div\n\t\t\t\t\tclass=\"sound row-{{$index}}\"\n\t\t\t\t\tdata-beatindex=\"{{beatIndex}}\"\n\t\t\t\t\tng-class=\"{active: isSoundInBeat(sound, pattern[beatIndex])}\"\n\t\t\t\t\tng-repeat=\"sound in sounds track by $index\"\n\t\t\t\t\tng-click=\"updateBeat(sound, beatIndex)\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 10 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
 	
-	angular.module('app').service('Sequencer', function () {
+	angular.module('app').service('Sequencer', function ($location) {
+	
+		var location = $location;
+		var url = location.$$protocol + '://' + location.$$host + ':' + location.$$port;
 	
 		var audioContext = new AudioContext();
 		var noteTime = void 0,
@@ -4691,9 +4697,10 @@ webpackJsonp([0],[
 		    timeoutId = void 0,
 		    requestId = void 0,
 		    source = void 0;
-		var beat = [];
+		var pattern = [[], [], [], [], [], [], [], [], [], [], [], []];
 		var tempo = 120;
 		var loopLength = 12;
+		var self = this;
 	
 		function getAudioBuffer(soundFileUrl) {
 			var promise = new Promise(function (resolve, reject) {
@@ -4713,20 +4720,33 @@ webpackJsonp([0],[
 		}
 	
 		this.getSounds = function () {
-			return Promise.all([getAudioBuffer('http://localhost:8080/1.wav'), getAudioBuffer('http://localhost:8080/2.wav'), getAudioBuffer('http://localhost:8080/3.wav'), getAudioBuffer('http://localhost:8080/4.wav'), getAudioBuffer('http://localhost:8080/5.wav'), getAudioBuffer('http://localhost:8080/6.wav'), getAudioBuffer('http://localhost:8080/7.wav'), getAudioBuffer('http://localhost:8080/8.wav')]);
-		};
-	
-		this.updateBeat = function (sound, beatIndex) {
-			if (beat[beatIndex] === sound) {
-				beat[beatIndex] = undefined;
-			} else {
-				beat[beatIndex] = sound;
-			}
-			return beat;
+			return Promise.all([getAudioBuffer(url + '/1.wav'), getAudioBuffer(url + '/2.wav'), getAudioBuffer(url + '/3.wav'), getAudioBuffer(url + '/4.wav'), getAudioBuffer(url + '/5.wav'), getAudioBuffer(url + '/6.wav'), getAudioBuffer(url + '/7.wav'), getAudioBuffer(url + '/8.wav')]);
 		};
 	
 		this.getTempo = function () {
 			return tempo;
+		};
+	
+		this.getPattern = function () {
+			return pattern;
+		};
+	
+		this.updateBeat = function (sound, beatIndex) {
+	
+			var soundsAtBeatIndex = pattern[beatIndex];
+			var soundInBeatIndex = soundsAtBeatIndex.find(function (soundInBeatIndex) {
+				return soundInBeatIndex === sound;
+			});
+	
+			if (soundInBeatIndex) {
+				pattern[beatIndex] = soundsAtBeatIndex.filter(function (existingSound) {
+					return existingSound != sound;
+				});
+			} else {
+				pattern[beatIndex].push(sound);
+			}
+	
+			return pattern;
 		};
 	
 		this.updateTempo = function (newTempo) {
@@ -4744,11 +4764,13 @@ webpackJsonp([0],[
 			noteTime = 0.0;
 			startTime = audioContext.currentTime + 0.2;
 			rhythmIndex = 0;
+			self.rhythmIndex = rhythmIndex;
 			schedule();
 		};
 	
 		this.stop = function () {
 			cancelAnimationFrame(requestId);
+			angular.element(document.querySelectorAll(".sound")).removeClass('current-beat playing');
 		};
 	
 		function playSound(sound) {
@@ -4758,16 +4780,56 @@ webpackJsonp([0],[
 			source.start(0);
 		}
 	
+		var highlightCurrentlyPlayingSounds = function highlightCurrentlyPlayingSounds(rhythmIndex) {
+			var soundsInLastBeat = angular.element(document.querySelectorAll('[data-beatIndex=\'' + (rhythmIndex + loopLength - 1) % loopLength + '\']'));
+			var soundsInCurrentBeat = angular.element(document.querySelectorAll('[data-beatIndex=\'' + rhythmIndex + '\']'));
+	
+			soundsInCurrentBeat.addClass('current-beat');
+			angular.forEach(soundsInCurrentBeat, function (sound) {
+				if (angular.element(sound).hasClass('active')) {
+					angular.element(sound).addClass('playing');
+				}
+			});
+			soundsInLastBeat.removeClass('current-beat playing');
+		};
+	
 		function schedule() {
 			var currentTime = audioContext.currentTime;
 			currentTime -= startTime;
 	
 			while (noteTime < currentTime + 0.200) {
 				var contextPlayTime = noteTime + startTime;
-				//Insert draw stuff here
-				if (beat[rhythmIndex]) {
-					playSound(beat[rhythmIndex]);
+				var sounds = pattern[rhythmIndex];
+	
+				if (sounds.length > 0) {
+					var _iteratorNormalCompletion = true;
+					var _didIteratorError = false;
+					var _iteratorError = undefined;
+	
+					try {
+						for (var _iterator = sounds[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+							var sound = _step.value;
+	
+							playSound(sound);
+						}
+					} catch (err) {
+						_didIteratorError = true;
+						_iteratorError = err;
+					} finally {
+						try {
+							if (!_iteratorNormalCompletion && _iterator.return) {
+								_iterator.return();
+							}
+						} finally {
+							if (_didIteratorError) {
+								throw _iteratorError;
+							}
+						}
+					}
 				}
+	
+				highlightCurrentlyPlayingSounds(rhythmIndex);
+	
 				advanceNote();
 			}
 			requestId = requestAnimationFrame(schedule, 0);
@@ -4777,6 +4839,7 @@ webpackJsonp([0],[
 			var secondsPerBeat = 60.0 / tempo;
 	
 			rhythmIndex++;
+			self.rhythmIndex = rhythmIndex;
 			if (rhythmIndex == loopLength) {
 				rhythmIndex = 0;
 			}
@@ -4785,14 +4848,12 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 11 */
+/* 20 */
 /***/ function(module, exports) {
 
 	'use strict';
 	
 	angular.module('app').controller('drumPad', ['$scope', 'Sequencer', function ($scope, Sequencer) {
-	
-		$scope.beat = [];
 	
 		Sequencer.getSounds().then(function (sounds) {
 			$scope.sounds = sounds;
@@ -4801,8 +4862,19 @@ webpackJsonp([0],[
 	
 		$scope.beatIsPlaying = false;
 	
+		$scope.isSoundInBeat = function (sound, beat) {
+			var soundInBeat = beat.find(function (soundInBeatIndex) {
+				return soundInBeatIndex === sound;
+			});
+			if (soundInBeat) {
+				return true;
+			}
+		};
+	
+		$scope.pattern = Sequencer.getPattern();
+	
 		$scope.updateBeat = function (sound, beatIndex) {
-			$scope.beat = Sequencer.updateBeat(sound, beatIndex);
+			$scope.pattern = Sequencer.updateBeat(sound, beatIndex);
 		};
 	
 		$scope.tempo = Sequencer.getTempo();

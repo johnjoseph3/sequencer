@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -28,6 +28,7 @@ module.exports = {
 	},
 	plugins : [
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
-		new ExtractTextPlugin("[name].css")
+		new ExtractTextPlugin("[name].css"),
+		new CopyWebpackPlugin([{ from: 'assets/sounds'}, { from: 'client/index.html'}])
 	]
 }

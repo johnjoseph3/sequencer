@@ -25,6 +25,14 @@ body {
 		width: 30px;
 		height: 30px;
 		margin-right: 10px;
+		&.play {
+			background-image: url('../assets/images/play-button.svg');
+			background-size: 100% 100%;
+		}
+		&.pause {
+			background-image: url('../assets/images/pause-button.svg');
+			background-size: 100% 100%;
+		}
 	}
 }
 
@@ -54,35 +62,35 @@ body {
 			margin: 1px;
 			height: 35px;
 			&.instrument-icon-0 {
-				background-image: url('/goblet-drum.svg');
+				background-image: url('../assets/images/goblet-drum.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-1 {
-				background-image: url('/snare-drum.svg');
+				background-image: url('../assets/images/snare-drum.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-2 {
-				background-image: url('/cymbals.svg');
+				background-image: url('../assets/images/cymbals.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-3 {
-				background-image: url('/tambourine.svg');
+				background-image: url('../assets/images/tambourine.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-4 {
-				background-image: url('/conga.svg');
+				background-image: url('../assets/images/conga.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-5 {
-				background-image: url('/maraca.svg');
+				background-image: url('../assets/images/maraca.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-6 {
-				background-image: url('/piano.svg');
+				background-image: url('../assets/images/piano.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-7 {
-				background-image: url('/synthesizer.svg');
+				background-image: url('../assets/images/synthesizer.svg');
 				background-size: 100% 100%;
 			}
 		}
@@ -95,6 +103,7 @@ body {
 	.sound {
 		flex: 1;
 		background: #292929;
+		min-width: 25px;
 		height: 35px;
 		margin: 1px;
 		&.current-beat {

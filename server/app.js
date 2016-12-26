@@ -1,8 +1,23 @@
-var express = require('express');
-var app = express();
+const path = require('path');
+const express = require('express');
 
-app.use(express.static('dist'));
+const isDeveloping = process.env.NODE_ENV !== 'production';
+const port = isDeveloping ? 3000 : process.env.PORT;
+const app = express();
 
-app.listen(4000, function () {
-	console.log('Example app listening on port 4000!');
+if (isDeveloping) {
+	console.log("In development mode");
+}
+
+app.use(express.static(path.join(__dirname, '../dist')));
+
+app.get('/', function response(req, res) {
+	res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
+app.listen(port, '0.0.0.0', function onStart(err) {
+	if (err) {
+		console.log(err);
+	}
+	console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });
