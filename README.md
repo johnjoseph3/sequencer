@@ -11,7 +11,7 @@ $ npm run start-dev
 Run production on port 3000:
 
 ```sh
-webpack
+$ webpack
 $ npm run start-prod
 ```
 
