@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base dist/ --inline"
+    "start-dev": "webpack-dev-server --content-base dist/ --inline",
+    "start-prod": "NODE_ENV=production PORT=3000 node ./server/app.js"
   },
   "author": "John Joseph",
   "license": "ISC",

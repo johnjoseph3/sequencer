@@ -5,7 +5,14 @@ Simple ES6 drum sequencer utilizing the [Web Audio API](https://developer.mozill
 Run webpack-dev-server on port 8080:
 
 ```sh
-$ npm start
+$ npm run start-dev
+```
+
+Run production on port 3000:
+
+```sh
+webpack
+$ npm run start-prod
 ```
 
 Tech includes: Angular, Webpack, LESS, and Express.
