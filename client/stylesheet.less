@@ -8,6 +8,7 @@
 @synthColor: #C62828;
 @backgroundColor: #121314;
 @primaryTextColor: #e6e6e6;
+@column-min-height: 350px;
 
 @colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
 
@@ -47,6 +48,7 @@ body {
 	color: white;
 	background: @backgroundColor;
 	border: 0;
+	max-width: 40px;
 }
 
 .grid {
@@ -55,15 +57,18 @@ body {
 	margin-top: 20px;
 	.column {
 		flex: 1;
+		min-height: @column-min-height;
 	}
 }
 
 .sound-icons-column {
 	flex: 0.5;
+	min-height: @column-min-height;
 	.icons {
 		display: flex;
 		flex-direction: column;
 		color: white;
+		height: 100%;
 		.icon {
 			flex: 1;
 			min-width: 25px;
@@ -110,6 +115,7 @@ body {
 .sounds {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	.sound {
 		flex: 1;
 		background: #333333;

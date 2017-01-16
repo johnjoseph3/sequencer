@@ -1,8 +1,21 @@
 angular.module('app').service('Sequencer', function($location) {
+	let AudioContext;
+	let webAudioApiContext;
 	const location = $location;
 	const url = `${location.$$protocol}://${location.$$host}:${location.$$port}`;
 
+	if(window.AudioContext) {
+		AudioContext = window.AudioContext;
+		webAudioApiContext = 'default';
+	} else if (window.webkitAudioContext) {
+		AudioContext = window.webkitAudioContext;
+		webAudioApiContext = 'webkit';
+	}	else {
+		alert("Sorry, your browser does not support the Web Audio API. Try Google Chrome.");
+	}
+
 	const audioContext = new AudioContext();
+
 	let noteTime, startTime, rhythmIndex, timeoutId, requestId, source;
 	let pattern = [[],[],[],[],[],[],[],[],[],[],[],[]];
 	let tempo = 120;
@@ -105,18 +118,17 @@ angular.module('app').service('Sequencer', function($location) {
 
 	function schedule() {
 		let currentTime = audioContext.currentTime;
-		currentTime -= startTime;
-
+		if(webAudioApiContext != 'webkit') {
+			currentTime -= startTime;
+		}
 		while (noteTime < currentTime + 0.200) {
 			let contextPlayTime = noteTime + startTime;
 			let sounds = pattern[rhythmIndex];
-
 			if (sounds.length > 0) {
 				for(let sound of sounds) {
 					playSound(sound);
 				}
 			}
-
 			highlightCurrentlyPlayingSounds(rhythmIndex);
 
 			advanceNote();
