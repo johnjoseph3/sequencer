@@ -6,9 +6,14 @@
 			ng-click="startOrStopBeat()"
 			alt="Play or pause button.">
 		<label>BPM:</label>
-		<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
+		<input type="number" class="tempo input-" ng-model="tempo" min="60" max="240"></input>
 	</div>
 	<div class="grid">
+		<div class="row-label-column">
+			<div class="row-labels">
+				<div class="label row-label-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
+			</div>
+		</div>
 		<div class="sound-icons-column">
 			<div class="icons">
 				<div class="icon instrument-icon-{{$index}}" ng-repeat="sound in sounds track by $index"></div>

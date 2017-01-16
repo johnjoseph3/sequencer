@@ -13,6 +13,9 @@
 
 body {
 	background: @backgroundColor;
+	font-family: "refrigerator-deluxe", sans-serif;
+	font-weight: 400;
+	font-size: 1em;
 }
 
 .home-link {
@@ -41,6 +44,9 @@ body {
 			background-size: 100% 100%;
 		}
 	}
+	.input {
+		font-weight: 700;
+	}
 }
 
 .tempo {
@@ -55,6 +61,45 @@ body {
 	margin-top: 20px;
 	.column {
 		flex: 1;
+	}
+}
+
+.row-names {
+	flex: 0.5;
+	.label {
+		display: flex;
+		flex-direction: column;
+		color: white;
+		&.row-label-0 {
+			content:"Bass";
+		}
+		&.row-label-1 {
+
+		}
+		&.row-label-2 {
+
+		}
+		&.row-label-3 {
+
+		}
+		&.row-label-4 {
+
+		}
+		&.row-label-5 {
+
+		}
+		&.row-label-6 {
+
+		}
+		&.row-label-7 {
+
+		}
+		&.row-label-8 {
+
+		}
+		&.row-label-9 {
+
+		}
 	}
 }
 
@@ -73,34 +118,42 @@ body {
 			&.instrument-icon-0 {
 				background-image: url('../assets/images/kick.svg');
 				background-size: 100% 100%;
+				label: "Bass";
 			}
 			&.instrument-icon-1 {
 				background-image: url('../assets/images/snare.svg');
 				background-size: 100% 100%;
+				label: "Snare";
 			}
 			&.instrument-icon-2 {
 				background-image: url('../assets/images/closed-hat.svg');
 				background-size: 100% 100%;
+				label: "Closed Hat";
 			}
 			&.instrument-icon-3 {
 				background-image: url('../assets/images/open-hat.svg');
 				background-size: 100% 100%;
+				label: "Open Hat";
 			}
 			&.instrument-icon-4 {
 				background-image: url('../assets/images/toms.svg');
 				background-size: 100% 100%;
+				label: "Toms";
 			}
 			&.instrument-icon-5 {
 				background-image: url('../assets/images/percussion.svg');
 				background-size: 100% 100%;
+				label: "Percussion";
 			}
 			&.instrument-icon-6 {
 				background-image: url('../assets/images/sample.svg');
 				background-size: 100% 100%;
+				label: "Sample/Fx";
 			}
 			&.instrument-icon-7 {
 				background-image: url('../assets/images/synth.svg');
 				background-size: 100% 100%;
+				label: "Synthesizer";
 			}
 		}
 	}
