@@ -1,5 +1,4 @@
 angular.module('app').service('Sequencer', function($location) {
-
 	const location = $location;
 	const url = `${location.$$protocol}://${location.$$host}:${location.$$port}`;
 
@@ -27,14 +26,14 @@ angular.module('app').service('Sequencer', function($location) {
 
 	this.getSounds = function() {
 		return Promise.all([
-			getAudioBuffer(`${url}/1.wav`),
-			getAudioBuffer(`${url}/2.wav`),
-			getAudioBuffer(`${url}/3.wav`),
-			getAudioBuffer(`${url}/4.wav`),
-			getAudioBuffer(`${url}/5.wav`),
-			getAudioBuffer(`${url}/6.wav`),
-			getAudioBuffer(`${url}/7.wav`),
-			getAudioBuffer(`${url}/8.wav`)
+			getAudioBuffer(`${url}/kick.mp3`),
+			getAudioBuffer(`${url}/snare.mp3`),
+			getAudioBuffer(`${url}/hit-hat.mp3`),
+			getAudioBuffer(`${url}/crash.mp3`),
+			getAudioBuffer(`${url}/rim-shot.mp3`),
+			getAudioBuffer(`${url}/clave.mp3`),
+			getAudioBuffer(`${url}/maracas.mp3`),
+			getAudioBuffer(`${url}/clap.mp3`)
 		]);
 	};
 
