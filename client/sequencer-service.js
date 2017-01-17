@@ -1,9 +1,21 @@
 angular.module('app').service('Sequencer', function($location) {
-
+	let AudioContext;
+	let webAudioApiContext;
 	const location = $location;
 	const url = `${location.$$protocol}://${location.$$host}:${location.$$port}`;
 
+	if(window.AudioContext) {
+		AudioContext = window.AudioContext;
+		webAudioApiContext = 'default';
+	} else if (window.webkitAudioContext) {
+		AudioContext = window.webkitAudioContext;
+		webAudioApiContext = 'webkit';
+	}	else {
+		alert("Sorry, your browser does not support the Web Audio API. Try Google Chrome.");
+	}
+
 	const audioContext = new AudioContext();
+
 	let noteTime, startTime, rhythmIndex, timeoutId, requestId, source;
 	let pattern = [[],[],[],[],[],[],[],[],[],[],[],[]];
 	let tempo = 120;
@@ -27,14 +39,14 @@ angular.module('app').service('Sequencer', function($location) {
 
 	this.getSounds = function() {
 		return Promise.all([
-			getAudioBuffer(`${url}/1.wav`),
-			getAudioBuffer(`${url}/2.wav`),
-			getAudioBuffer(`${url}/3.wav`),
-			getAudioBuffer(`${url}/4.wav`),
-			getAudioBuffer(`${url}/5.wav`),
-			getAudioBuffer(`${url}/6.wav`),
-			getAudioBuffer(`${url}/7.wav`),
-			getAudioBuffer(`${url}/8.wav`)
+			getAudioBuffer(`${url}/kick.mp3`),
+			getAudioBuffer(`${url}/snare.mp3`),
+			getAudioBuffer(`${url}/hit-hat.mp3`),
+			getAudioBuffer(`${url}/crash.mp3`),
+			getAudioBuffer(`${url}/rim-shot.mp3`),
+			getAudioBuffer(`${url}/clave.mp3`),
+			getAudioBuffer(`${url}/maracas.mp3`),
+			getAudioBuffer(`${url}/clap.mp3`)
 		]);
 	};
 
@@ -106,18 +118,17 @@ angular.module('app').service('Sequencer', function($location) {
 
 	function schedule() {
 		let currentTime = audioContext.currentTime;
-		currentTime -= startTime;
-
+		if(webAudioApiContext != 'webkit') {
+			currentTime -= startTime;
+		}
 		while (noteTime < currentTime + 0.200) {
 			let contextPlayTime = noteTime + startTime;
 			let sounds = pattern[rhythmIndex];
-
 			if (sounds.length > 0) {
 				for(let sound of sounds) {
 					playSound(sound);
 				}
 			}
-
 			highlightCurrentlyPlayingSounds(rhythmIndex);
 
 			advanceNote();

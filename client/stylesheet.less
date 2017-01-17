@@ -1,12 +1,14 @@
-@kickColor: #44AE43;
-@snareColor: #FB004A;
-@closedHatColor: #FC7F08;
-@openHatColor: #FFFB4B;
-@tomsColor: #29C7DE;
-@percussionColor: #D200FF;
-@fxColor: #2087FE;
-@synthColor: #C1161F;
-@backgroundColor: #101012;
+@kickColor: #4CAF50;
+@snareColor: #F50057;
+@closedHatColor: #FB8C00;
+@openHatColor: #FFEE58;
+@tomsColor: #26C6DA;
+@percussionColor: #D500F9;
+@fxColor: #2196F3;
+@synthColor: #C62828;
+@backgroundColor: #121314;
+@primaryTextColor: #e6e6e6;
+@column-min-height: 350px;
 
 @colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
 
@@ -46,6 +48,7 @@ body {
 	color: white;
 	background: @backgroundColor;
 	border: 0;
+	max-width: 40px;
 }
 
 .grid {
@@ -54,49 +57,55 @@ body {
 	margin-top: 20px;
 	.column {
 		flex: 1;
+		min-height: @column-min-height;
 	}
 }
 
 .sound-icons-column {
 	flex: 0.5;
+	min-height: @column-min-height;
 	.icons {
 		display: flex;
 		flex-direction: column;
 		color: white;
+		height: 100%;
 		.icon {
 			flex: 1;
-			margin: 1px;
+			min-width: 25px;
+			margin-top: 10px;
+			margin-left: 4px;
+			margin-right: 10px;
 			height: 35px;
 			&.instrument-icon-0 {
-				background-image: url('../assets/images/goblet-drum.svg');
+				background-image: url('../assets/images/kick.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-1 {
-				background-image: url('../assets/images/snare-drum.svg');
+				background-image: url('../assets/images/snare.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-2 {
-				background-image: url('../assets/images/cymbals.svg');
+				background-image: url('../assets/images/closed-hat.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-3 {
-				background-image: url('../assets/images/tambourine.svg');
+				background-image: url('../assets/images/open-hat.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-4 {
-				background-image: url('../assets/images/conga.svg');
+				background-image: url('../assets/images/toms.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-5 {
-				background-image: url('../assets/images/maraca.svg');
+				background-image: url('../assets/images/percussion.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-6 {
-				background-image: url('../assets/images/piano.svg');
+				background-image: url('../assets/images/sample.svg');
 				background-size: 100% 100%;
 			}
 			&.instrument-icon-7 {
-				background-image: url('../assets/images/synthesizer.svg');
+				background-image: url('../assets/images/synth.svg');
 				background-size: 100% 100%;
 			}
 		}
@@ -106,12 +115,14 @@ body {
 .sounds {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	.sound {
 		flex: 1;
-		background: #292929;
+		background: #333333;
 		min-width: 25px;
 		height: 35px;
-		margin: 1px;
+		margin-top: 10px;
+		margin-left: 4px;
 		&.current-beat {
 			background: #434547;
 		}
