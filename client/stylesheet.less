@@ -6,27 +6,34 @@
 @percussionColor: #D500F9;
 @fxColor: #2196F3;
 @synthColor: #C62828;
-@backgroundColor: #121314;
+@backgroundColorApp: #121314;
+@backgroundColorSite: #101010;
 @primaryTextColor: #e6e6e6;
 
 @colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
 
 body {
-	background: @backgroundColor;
+	background: @backgroundColorSite;
 	font-family: "refrigerator-deluxe", sans-serif;
 	font-weight: 400;
 	font-size: 1em;
 }
 
+.appContainer {
+	background-color: @backgroundColorApp;
+}
+
 .home-link {
 	color: white;
 	text-decoration: none;
+	font-size: 30px;
 }
 
 .controls {
 	display: flex;
 	align-items: center;
 	margin-top: 20px;
+	background-color: @backgroundColorSite;
 	label {
 		color: white;
 		margin-right: 5px;
@@ -51,7 +58,7 @@ body {
 
 .tempo {
 	color: white;
-	background: @backgroundColor;
+	background: @backgroundColorApp;
 	border: 0;
 }
 
@@ -59,52 +66,54 @@ body {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
+	max-width: 800px;
+	min-width: 400px;
 	.column {
 		flex: 1;
 	}
 }
 
-.row-names {
-	flex: 0.5;
-	.label {
-		display: flex;
-		flex-direction: column;
-		color: white;
-		&.row-label-0 {
-			content:"Bass";
-		}
-		&.row-label-1 {
-
-		}
-		&.row-label-2 {
-
-		}
-		&.row-label-3 {
-
-		}
-		&.row-label-4 {
-
-		}
-		&.row-label-5 {
-
-		}
-		&.row-label-6 {
-
-		}
-		&.row-label-7 {
-
-		}
-		&.row-label-8 {
-
-		}
-		&.row-label-9 {
-
-		}
-	}
-}
+// .row-label-column
+// 	flex: 0.5;
+// 	.row-names {
+// 		display: flex;
+// 		flex-direction: column;
+// 		color: white;
+// 		.label {
+// 			flex: 1;
+// 			margin-top: 10px;
+// 			margin-left: 4px;
+// 			height: 35px;
+// 			&.row-label-0 {
+// 				content: "Bass";
+// 			}
+// 			&.row-label-1 {
+// 				content: "Snare";
+// 			}
+// 			&.row-label-2 {
+// 				content: "Closed Hat";
+// 			}
+// 			&.row-label-3 {
+// 				content: "Open Hat";
+// 			}
+// 			&.row-label-4 {
+// 				content: "Toms";
+// 			}
+// 			&.row-label-5 {
+// 				content: "Percussion";
+// 			}
+// 			&.row-label-6 {
+// 				content: "Sample/Fx";
+// 			}
+// 			&.row-label-7 {
+// 				content: "Synthesizer";
+// 			}
+// 		}
+// 	}
+// }
 
 .sound-icons-column {
-	flex: 0.5;
+	flex: 2;
 	.icons {
 		display: flex;
 		flex-direction: column;
@@ -115,45 +124,47 @@ body {
 			margin-left: 4px;
 			margin-right: 10px;
 			height: 35px;
+			width: 35px;
 			&.instrument-icon-0 {
 				background-image: url('../assets/images/kick.svg');
 				background-size: 100% 100%;
-				label: "Bass";
+				content: "Kick";
 			}
+
 			&.instrument-icon-1 {
 				background-image: url('../assets/images/snare.svg');
 				background-size: 100% 100%;
-				label: "Snare";
+				content: "Kick";
 			}
 			&.instrument-icon-2 {
 				background-image: url('../assets/images/closed-hat.svg');
 				background-size: 100% 100%;
-				label: "Closed Hat";
+				content: "Kick";
 			}
 			&.instrument-icon-3 {
 				background-image: url('../assets/images/open-hat.svg');
 				background-size: 100% 100%;
-				label: "Open Hat";
+				content: "Kick";
 			}
 			&.instrument-icon-4 {
 				background-image: url('../assets/images/toms.svg');
 				background-size: 100% 100%;
-				label: "Toms";
+				content: "Kick";
 			}
 			&.instrument-icon-5 {
 				background-image: url('../assets/images/percussion.svg');
 				background-size: 100% 100%;
-				label: "Percussion";
+				content: "Kick";
 			}
 			&.instrument-icon-6 {
 				background-image: url('../assets/images/sample.svg');
 				background-size: 100% 100%;
-				label: "Sample/Fx";
+				content: "Kick";
 			}
 			&.instrument-icon-7 {
 				background-image: url('../assets/images/synth.svg');
 				background-size: 100% 100%;
-				label: "Synthesizer";
+				content: "Kick";
 			}
 		}
 	}

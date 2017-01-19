@@ -19,8 +19,10 @@
 		<script src="./app.bundle.js"></script>
 		<base href="/">
 	</head>
-	<body ng-app="app">
-		<a class="home-link" href="http://johnjoseph.me">Home</a>
-		<div ui-view></div>
+	<body ng-app="app"  style="backgroundColor: #101010">
+		<div class="header-container" >
+			<a class="home-link" href="http://johnjoseph.me">Home</a>
+		</div>
+		<div ui-view style="max-width:90%"></div>
 	</body>
 </html>
