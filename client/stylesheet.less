@@ -20,7 +20,7 @@ body {
 	font-size: 1em;
 }
 
-.appContainer {
+.app-container {
 	background-color: @backgroundColorApp;
 }
 
@@ -76,44 +76,26 @@ body {
 	}
 }
 
-// .row-label-column
-// 	flex: 0.5;
-// 	.row-names {
-// 		display: flex;
-// 		flex-direction: column;
-// 		color: white;
-// 		.label {
-// 			flex: 1;
-// 			margin-top: 10px;
-// 			margin-left: 4px;
-// 			height: 35px;
-// 			&.row-label-0 {
-// 				content: "Bass";
-// 			}
-// 			&.row-label-1 {
-// 				content: "Snare";
-// 			}
-// 			&.row-label-2 {
-// 				content: "Closed Hat";
-// 			}
-// 			&.row-label-3 {
-// 				content: "Open Hat";
-// 			}
-// 			&.row-label-4 {
-// 				content: "Toms";
-// 			}
-// 			&.row-label-5 {
-// 				content: "Percussion";
-// 			}
-// 			&.row-label-6 {
-// 				content: "Sample/Fx";
-// 			}
-// 			&.row-label-7 {
-// 				content: "Synthesizer";
-// 			}
-// 		}
-// 	}
-// }
+.row-label-column {
+	flex: 0.5;
+	.row-labels {
+		display: flex;
+		flex-direction: column;
+		color: white;
+		height: 100%;
+		display: flex;
+		text-align: right;
+		.label {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			flex: 1;
+			margin-right: 4px;
+			height: 35px;
+			margin-top: 10px;
+		}
+	}
+}
 
 .sound-icons-column {
 	flex: 0.5;
@@ -134,43 +116,34 @@ body {
 			&.instrument-icon-0 {
 				background-image: url('../assets/images/kick.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
-
 			&.instrument-icon-1 {
 				background-image: url('../assets/images/snare.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 			&.instrument-icon-2 {
 				background-image: url('../assets/images/closed-hat.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 			&.instrument-icon-3 {
 				background-image: url('../assets/images/open-hat.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 			&.instrument-icon-4 {
 				background-image: url('../assets/images/toms.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 			&.instrument-icon-5 {
 				background-image: url('../assets/images/percussion.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 			&.instrument-icon-6 {
 				background-image: url('../assets/images/sample.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 			&.instrument-icon-7 {
 				background-image: url('../assets/images/synth.svg');
 				background-size: 100% 100%;
-				content: "Kick";
 			}
 		}
 	}

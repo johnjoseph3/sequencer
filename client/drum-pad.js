@@ -1,8 +1,22 @@
 angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Sequencer) => {
 
+	const instrumentNames = [
+		'Kick',
+		'Snare',
+		'Closed Hat',
+		'Open Hat',
+		'Toms',
+		'Percussion',
+		'Sample/Fx',
+		'Sythensizer'
+	];
+
 	Sequencer.getSounds()
 		.then(function(sounds){
-			$scope.sounds = sounds;
+			$scope.sounds = [];
+			sounds.forEach(function(sound, index){
+				$scope.sounds.push({sound: sound, instrumentName: instrumentNames[index]});
+			});
 			$scope.$apply();
 	});
 

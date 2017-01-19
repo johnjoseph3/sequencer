@@ -1,4 +1,4 @@
-<div class="appContainer" ng-controller="drumPad">
+<div class="app-container" ng-controller="drumPad">
 	<div class="controls">
 		<img
 			class="play-pause-button"
@@ -10,11 +10,13 @@
 	</div>
 	<div class="background-container" >
 		<div class="grid">
-			<!-- <div class="row-label-column">
+
+			<div class="row-label-column">
 				<div class="row-labels">
-					<div class="label row-label-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
+					<div class="label" ng-repeat="sound in sounds track by $index">{{sound.instrumentName}}</div>
 				</div>
-			</div> -->
+			</div>
+
 			<div class="sound-icons-column">
 				<div class="icons">
 					<div class="icon instrument-icon-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
