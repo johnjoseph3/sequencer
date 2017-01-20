@@ -8,6 +8,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="./vendor.bundle.js"></script>
 		<!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+		<!-- Fonts from typekit -->
+		<script src="https://use.typekit.net/znc8ini.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<!-- Place favicon.ico in the root directory -->
 
 		<!-- <link rel="stylesheet" href="css/normalize.css"> -->
@@ -16,7 +20,9 @@
 		<base href="/">
 	</head>
 	<body ng-app="app">
-		<a class="home-link" href="http://johnjoseph.me">Home</a>
+		<div class="header-container" >
+			<a class="home-link" href="http://johnjoseph.me">Home</a>
+		</div>
 		<div ui-view></div>
 	</body>
 </html>

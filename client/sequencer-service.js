@@ -98,7 +98,7 @@ angular.module('app').service('Sequencer', function($location) {
 
 	function playSound(sound) {
 		source = audioContext.createBufferSource();
-		source.buffer = sound;
+		source.buffer = sound.sound;
 		source.connect(audioContext.destination);
 		source.start(0);
 	}

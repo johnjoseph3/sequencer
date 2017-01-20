@@ -1,4 +1,4 @@
-<div ng-controller="drumPad">
+<div class="app-container" ng-controller="drumPad">
 	<div class="controls">
 		<img
 			class="play-pause-button"
@@ -6,24 +6,33 @@
 			ng-click="startOrStopBeat()"
 			alt="Play or pause button.">
 		<label>BPM:</label>
-		<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
+		<input type="number" class="tempo input-" ng-model="tempo" min="60" max="240"></input>
 	</div>
-	<div class="grid">
-		<div class="sound-icons-column">
-			<div class="icons">
-				<div class="icon instrument-icon-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
+	<div class="background-container" >
+		<div class="grid">
+
+			<div class="row-label-column">
+				<div class="row-labels">
+					<div class="label" ng-repeat="sound in sounds track by $index">{{sound.instrumentName}}</div>
+				</div>
 			</div>
-		</div>
-		<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
-			<div class="sounds">
-				<div
-					class="sound row-{{$index}}"
-					data-beatindex="{{beatIndex}}"
-					ng-class="{active: isSoundInBeat(sound, pattern[beatIndex])}"
-					ng-repeat="sound in sounds track by $index"
-					ng-click="updateBeat(sound, beatIndex)">
+
+			<div class="sound-icons-column">
+				<div class="icons">
+					<div class="icon instrument-icon-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
+				</div>
+			</div>
+			<div class="column" ng-repeat="step in [].constructor(numberOfSteps) track by $index" ng-init="beatIndex = $index">
+				<div class="sounds">
+					<div
+						class="sound row-{{$index}}"
+						data-beatindex="{{beatIndex}}"
+						ng-class="{active: isSoundInBeat(sound, pattern[beatIndex])}"
+						ng-repeat="sound in sounds track by $index"
+						ng-click="updateBeat(sound, beatIndex)">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
 </div>
