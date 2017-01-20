@@ -2,10 +2,6 @@
 
 Simple ES6 drum sequencer utilizing the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
 
-Install all dependencies with `npm install`
-
-Make sure you have webpack-dev-server installed as well. You can install this with `npm install -g webpack-dev-server` 
-
 ###Development
 
 Run webpack-dev-server on port 8080:
