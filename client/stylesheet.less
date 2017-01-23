@@ -6,7 +6,7 @@
 @percussionColor: #D500F9;
 @fxColor: #2196F3;
 @synthColor: #C62828;
-@backgroundColorApp: #121314;
+@backgroundColorDrumPad: #121314;
 @backgroundColorSite: #101010;
 @primaryTextColor: #e6e6e6;
 @column-min-height: 350px;
@@ -18,10 +18,6 @@ body {
 	font-family: "refrigerator-deluxe", sans-serif;
 	font-weight: 400;
 	font-size: 1em;
-}
-
-.app-container {
-	background-color: @backgroundColorApp;
 }
 
 .home-link {
@@ -59,17 +55,44 @@ body {
 
 .tempo {
 	color: white;
-	background: @backgroundColorApp;
+	background: @backgroundColorDrumPad;
 	border: 0;
 	max-width: 40px;
+}
+
+.page-content {
+	text-align: center;
+}
+
+@media (min-width: 880px) {
+	.drum-pad-container {
+		width: 800px;
+	}
+}
+
+@media (max-width: 880px) and (min-width: 650px) {
+	.grid {
+		width: 600px;
+	}
+}
+
+.drum-pad-container {
+	display: inline-block;
+	padding: 20px;
+	background: @backgroundColorDrumPad;
+}
+
+@media (max-width: 450px) {
+	.drum-pad-container {
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
 .grid {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
-	max-width: 800px;
-	min-width: 400px;
 	.column {
 		flex: 1;
 		min-height: @column-min-height;
@@ -95,6 +118,12 @@ body {
 	}
 }
 
+@media (max-width: 650px) {
+	.row-label-column {
+		display: none;
+	}
+}
+
 .sound-icons-column {
 	flex: 0.5;
 	min-height: @column-min-height;
@@ -105,12 +134,14 @@ body {
 		height: 100%;
 		.icon {
 			flex: 1;
-			min-width: 25px;
 			margin-top: 10px;
 			margin-left: 4px;
 			margin-right: 10px;
 			height: 35px;
 			width: 35px;
+			@media (max-width: 450px) {
+				width: 22px;
+			}
 			&.instrument-icon-0 {
 				background-image: url('../assets/images/kick.svg');
 				background-size: 100% 100%;

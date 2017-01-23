@@ -1,22 +1,20 @@
-<div ng-controller="drumPad">
-	<div class="controls">
-		<img
-			class="play-pause-button"
-			ng-class="beatIsPlaying ? 'pause' : 'play'"
-			ng-click="startOrStopBeat()"
-			alt="Play or pause button.">
-		<label>BPM:</label>
-		<input type="number" class="tempo input-" ng-model="tempo" min="60" max="240"></input>
-	</div>
-	<div class="background-container" >
+<div ng-controller="drumPad" class="page-content">
+	<div class="drum-pad-container">
+		<div class="controls">
+			<img
+				class="play-pause-button"
+				ng-class="beatIsPlaying ? 'pause' : 'play'"
+				ng-click="startOrStopBeat()"
+				alt="Play or pause button.">
+			<label>BPM:</label>
+			<input type="number" class="tempo input-" ng-model="tempo" min="60" max="240"></input>
+		</div>
 		<div class="grid">
-
 			<div class="row-label-column">
 				<div class="row-labels">
 					<div class="label" ng-repeat="sound in sounds track by $index">{{sound.instrumentName}}</div>
 				</div>
 			</div>
-
 			<div class="sound-icons-column">
 				<div class="icons">
 					<div class="icon instrument-icon-{{$index}}" ng-repeat="sound in sounds track by $index"></div>
@@ -34,5 +32,4 @@
 				</div>
 			</div>
 		</div>
-
-</div>
+	</div>
