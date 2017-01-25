@@ -6,9 +6,11 @@
 @percussionColor: #D500F9;
 @fxColor: #2196F3;
 @synthColor: #C62828;
-@backgroundColorDrumPad: #121314;
+@backgroundColorDrumPad: #141516;
 @backgroundColorSite: #101010;
+@backgroundColorControlBar: #212121;
 @primaryTextColor: #e6e6e6;
+@secondaryTextColor: #b3b3b3;
 @column-min-height: 350px;
 
 @colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
@@ -17,40 +19,80 @@ body {
 	background: @backgroundColorSite;
 	font-family: "refrigerator-deluxe", sans-serif;
 	font-weight: 400;
-	font-size: 1em;
+	font-size: 1rem;
 }
 
-.home-link {
-	color: white;
-	text-decoration: none;
-	font-size: 30px;
+.header-container {
+	background-color: #000000;
+	display: flex;
+	align-items: center;
+	a {
+		text-decoration: none;
+		color: @primaryTextColor;
+	}
+}
+
+.page-title {
+	flex: 1;
+	justify-content: flex-start;
+	padding-left: 1rem;
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+.credit {
+	flex: 3;
+	justify-content: flex-end;
+	padding-right: 1rem;
+	text-align: right;
+	font-size: 1rem;
+	font-weight: 200;
 }
 
 .controls {
-	display: flex;
+	display: flex;;
+	flex-direction: row;
+	justify-content: flex-start;
 	align-items: center;
-	margin-top: 20px;
-	background-color: @backgroundColorSite;
-	label {
-		color: white;
-		margin-right: 5px;
-	}
+	background-color: @backgroundColorControlBar;
+	height: 50px;
+	width: 100%;
+	margin: -20px 0px 0px -20px;
+	padding-right: 40px;
+	// label {
+	// 	color: white;
+	// 	margin-right: 5px;
+	// }
 	.play-pause-button {
-		width: 30px;
-		height: 30px;
+		flex: none;
+		align-self: flex-start;
+		height: 100%;
+		width: 50px;
 		margin-right: 10px;
+		// display: block;
+
+		border-color: @backgroundColorControlBar;
+		background-repeat: no-repeat;
+		background-position: center;
 		&.play {
 			background-image: url('../assets/images/play-button.svg');
 			background-size: 80% 80%;
 			background-color: #9fee3c;
-			position:absolute;
-			top: 50%;
-			left: 50%;
 		}
 		&.pause {
 			background-image: url('../assets/images/pause-button.svg');
-			background-size: 100% 100%;
+			background-size: 70% 70%;
 			background-color: #d32f2f;
+		}
+	}
+	.control-variable {
+		// flex-grow: 1;
+		min-width: 100px;
+		color: @primaryTextColor;
+		font-size: 1.8rem;
+		border: 0;
+		label {
+			font-size: 1.2rem;
 		}
 	}
 	.input {
@@ -59,14 +101,13 @@ body {
 }
 
 .tempo {
-	color: white;
-	background: @backgroundColorDrumPad;
 	border: 0;
 	max-width: 40px;
 }
 
 .page-content {
 	text-align: center;
+	box-shadow: 0px -20px 15px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 880px) {
