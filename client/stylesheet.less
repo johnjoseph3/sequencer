@@ -57,8 +57,6 @@ body {
 	background-color: @backgroundColorControlBar;
 	height: 50px;
 	width: 100%;
-	margin: -20px 0px 0px -20px;
-	padding-right: 40px;
 
 	.play-pause-button {
 		flex: none;
@@ -119,17 +117,18 @@ body {
 	}
 }
 
-.drum-pad-container {
-	display: inline-block;
+.grid-container {
 	padding: 20px;
-	background: @backgroundColorDrumPad;
-}
-
-@media (max-width: 450px) {
-	.drum-pad-container {
+	@media (max-width: 450px) {
 		padding-right: 0;
 		padding-left: 0;
 	}
+}
+
+.drum-pad-container {
+	display: inline-block;
+	background: @backgroundColorDrumPad;
+	padding-top: 20px;
 }
 
 .grid {
@@ -184,6 +183,7 @@ body {
 			width: 35px;
 			@media (max-width: 450px) {
 				width: 22px;
+				margin-right: 2px;
 			}
 			&.instrument-icon-0 {
 				background-image: url('../assets/images/kick.svg');
