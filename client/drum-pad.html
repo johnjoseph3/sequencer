@@ -1,13 +1,15 @@
 <div ng-controller="drumPad" class="page-content">
 	<div class="drum-pad-container">
 		<div class="controls">
-			<img
+			<div
 				class="play-pause-button"
 				ng-class="beatIsPlaying ? 'pause' : 'play'"
-				ng-click="startOrStopBeat()"
-				alt="Play or pause button.">
-			<label>BPM:</label>
-			<input type="number" class="tempo input-" ng-model="tempo" min="60" max="240"></input>
+				ng-click="startOrStopBeat()">
+			</div>
+			<div class="control">
+				<label>BPM:</label>
+				<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
+			</div>
 		</div>
 		<div class="grid">
 			<div class="row-label-column">
@@ -33,3 +35,4 @@
 			</div>
 		</div>
 	</div>
+</div>
