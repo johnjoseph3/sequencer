@@ -12,14 +12,22 @@
 @primaryTextColor: #e6e6e6;
 @secondaryTextColor: #b3b3b3;
 @column-min-height: 350px;
+@soundPadColor: #333333;
 
 @colors: @kickColor,  @snareColor, @closedHatColor, @openHatColor, @tomsColor, @percussionColor, @fxColor, @synthColor;
 
 body {
 	background: @backgroundColorSite;
+	color: @primaryTextColor;
 	font-family: "refrigerator-deluxe", sans-serif;
 	font-weight: 400;
 	font-size: 1rem;
+}
+
+button {
+	border: 0;
+	background-color: @soundPadColor;
+	color: @primaryTextColor;
 }
 
 .header-container {
@@ -78,21 +86,28 @@ body {
 			background-size: 70% 70%;
 			background-color: #d32f2f;
 		}
+
 	}
 
-	.control {
+	.bpm {
 		min-width: 100px;
-		color: @primaryTextColor;
-		font-size: 1.8rem;
-		border: 0;
 		label {
 			font-size: 1.2rem;
 		}
 	}
 
-	.input {
-		font-weight: 700;
+	.clear-pattern-container {
+		width: 100%;
+		text-align: right;
+		button {
+			font-size: 1.1rem;
+			margin-right: 20px;
+			@media (max-width: 450px) {
+				margin-right: 0;
+			}
+		}
 	}
+
 }
 
 .tempo {
@@ -227,7 +242,7 @@ body {
 	height: 100%;
 	.sound {
 		flex: 1;
-		background: #333333;
+		background: @soundPadColor;
 		min-width: 25px;
 		height: 35px;
 		margin-top: 10px;

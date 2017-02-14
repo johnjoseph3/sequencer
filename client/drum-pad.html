@@ -6,9 +6,12 @@
 				ng-class="beatIsPlaying ? 'pause' : 'play'"
 				ng-click="startOrStopBeat()">
 			</div>
-			<div class="control">
+			<div class="bpm">
 				<label>BPM:</label>
 				<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
+			</div>
+			<div class="clear-pattern-container">
+				<button ng-click="clearPattern()">Clear</button>
 			</div>
 		</div>
 		<div class="grid-container">

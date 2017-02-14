@@ -52,4 +52,8 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 		$scope.beatIsPlaying = !$scope.beatIsPlaying;
 	};
 
+	$scope.clearPattern = () => {
+		$scope.pattern = Sequencer.clearPattern();
+	};
+
 }]);

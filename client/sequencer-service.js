@@ -72,6 +72,11 @@ angular.module('app').service('Sequencer', function($location) {
 		return pattern;
 	};
 
+	this.clearPattern = () => {
+		pattern = [[],[],[],[],[],[],[],[],[],[],[],[]];
+		return pattern;
+	};
+
 	this.updateTempo = function(newTempo) {
 		tempo = parseInt(newTempo);
 	};
