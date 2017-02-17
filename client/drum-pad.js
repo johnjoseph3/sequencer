@@ -56,4 +56,8 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 		$scope.pattern = Sequencer.clearPattern();
 	};
 
+	$scope.playSound = (sound) => {
+		Sequencer.playSound(sound.sound);
+	};
+
 }]);
