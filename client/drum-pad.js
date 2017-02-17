@@ -1,21 +1,28 @@
+import {availableSounds} from './sounds.js';
+
 angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Sequencer) => {
 
-	const instrumentNames = [
-		'Kick',
-		'Snare',
-		'Closed Hat',
-		'Open Hat',
-		'Toms',
-		'Percussion',
-		'Sample/Fx',
-		'Sythensizer'
+	const instruments = [
+		'kick',
+		'snare',
+		'closedHat',
+		'openHat',
+		'toms',
+		'percussion',
+		'sampleFx',
+		'synth'
 	];
 
 	Sequencer.getSounds()
 		.then(function(sounds){
 			$scope.sounds = [];
 			sounds.forEach(function(sound, index){
-				$scope.sounds.push({sound: sound, instrumentName: instrumentNames[index]});
+				let soundMetaData = availableSounds[instruments[index]];
+				$scope.sounds.push({
+					sound: sound,
+					instrumentName: soundMetaData.instrumentName,
+					alternateSounds: soundMetaData.sounds
+				});
 			});
 			$scope.$apply();
 	});

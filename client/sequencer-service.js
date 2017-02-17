@@ -1,3 +1,5 @@
+import {availableSounds} from './sounds.js';
+
 angular.module('app').service('Sequencer', function($location) {
 	let AudioContext;
 	let webAudioApiContext;
@@ -39,7 +41,7 @@ angular.module('app').service('Sequencer', function($location) {
 
 	this.getSounds = function() {
 		return Promise.all([
-			getAudioBuffer(`${url}/kick.mp3`),
+			getAudioBuffer(`${url}/kick/${availableSounds.kick.sounds[0]}`),
 			getAudioBuffer(`${url}/snare.mp3`),
 			getAudioBuffer(`${url}/hit-hat.mp3`),
 			getAudioBuffer(`${url}/crash.mp3`),
