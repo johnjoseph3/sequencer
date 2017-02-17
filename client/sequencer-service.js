@@ -39,6 +39,10 @@ angular.module('app').service('Sequencer', function($location) {
 		return promise;
 	}
 
+	this.getSound = function(sound, newSound) {
+		return getAudioBuffer(`${url}/${sound.name}/${newSound}`);
+	};
+
 	this.getSounds = function() {
 		return Promise.all([
 			getAudioBuffer(`${url}/kick/${availableSounds.kick.sounds[0]}`),

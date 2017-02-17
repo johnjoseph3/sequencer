@@ -1,5 +1,6 @@
 const kick = {
-	instrumentName: "Kick",
+	name: "kick",
+	humanReadableName: "Kick",
 	sounds: [
 		'Bass-Drum-1.wav',
 		'Bass-Drum-2.wav',
@@ -13,7 +14,8 @@ const kick = {
 };
 
 const snare = {
-	instrumentName: "Snare",
+	name: "snare",
+	humanReadableName: "Snare",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
@@ -24,7 +26,8 @@ const snare = {
 
 // Wrong sounds
 const closedHat = {
-	instrumentName: "Closed Hat",
+	name: "closed-hat",
+	humanReadableName: "Closed Hat",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
@@ -34,7 +37,8 @@ const closedHat = {
 };
 
 const openHat = {
-	instrumentName: "Closed Hat",
+	name: "open-hat",
+	humanReadableName: "Open Hat",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
@@ -44,7 +48,8 @@ const openHat = {
 };
 
 const toms = {
-	instrumentName: "Toms",
+	name: "toms",
+	humanReadableName: "Toms",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
@@ -54,7 +59,8 @@ const toms = {
 };
 
 const percussion = {
-	instrumentName: "Percussion",
+	name: "percussion",
+	humanReadableName: "Percussion",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
@@ -64,7 +70,8 @@ const percussion = {
 };
 
 const sampleFx = {
-	instrumentName: "Sample/FX",
+	name: "sample/fx",
+	humanReadableName: "Sample/FX",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
@@ -74,7 +81,8 @@ const sampleFx = {
 };
 
 const synth = {
-	instrumentName: "Synth",
+	name: "synth",
+	humanReadableName: "Synth",
 	sounds: [
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',

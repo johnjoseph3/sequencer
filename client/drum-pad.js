@@ -1,7 +1,6 @@
 import {availableSounds} from './sounds.js';
 
 angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Sequencer) => {
-
 	const instruments = [
 		'kick',
 		'snare',
@@ -13,19 +12,36 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 		'synth'
 	];
 
+	$scope.selectedSounds = [];
+
 	Sequencer.getSounds()
 		.then(function(sounds){
 			$scope.sounds = [];
 			sounds.forEach(function(sound, index){
 				let soundMetaData = availableSounds[instruments[index]];
+				$scope.selectedSounds[index] = soundMetaData.sounds[0];
 				$scope.sounds.push({
 					sound: sound,
-					instrumentName: soundMetaData.instrumentName,
+					name: soundMetaData.name,
+					humanReadableName: soundMetaData.humanReadableName,
 					alternateSounds: soundMetaData.sounds
 				});
 			});
 			$scope.$apply();
 	});
+
+	$scope.changeSound = (sound, index, soundIndex) => {
+		Sequencer.getSound(sound, $scope.selectedSounds[index])
+			.then(function(sound) {
+				let soundMetaData = availableSounds[instruments[index]];
+				$scope.sounds[soundIndex] = {
+					sound: sound,
+					name: soundMetaData.name,
+					humanReadableName: soundMetaData.humanReadableName,
+					alternateSounds: soundMetaData.sounds
+				};
+			});
+	};
 
 	$scope.beatIsPlaying = false;
 
