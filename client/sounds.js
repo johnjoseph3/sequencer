@@ -20,19 +20,25 @@ const snare = {
 		'E-Mu-Proteus-FX-Wacky-Snare.wav',
 		'Ensoniq-ESQ-1-Snare-2.wav',
 		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'Ensoniq-VFX-SD-Snare.wav',
+		'Hip-Hop-Snare-1.wav',
+		'Hip-Hop-Snare-2.wav',
+		'Hip-Hop-Snare-3.wav'
 	]
 };
 
-// Wrong sounds
 const closedHat = {
 	name: "closed-hat",
 	humanReadableName: "Closed Hat",
 	sounds: [
-		'E-Mu-Proteus-FX-Wacky-Snare.wav',
-		'Ensoniq-ESQ-1-Snare-2.wav',
-		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'Closed-Hi-Hat-1.wav',
+		'Closed-Hi-Hat-2.wav',
+		'Closed-Hi-Hat-3.wav',
+		'Closed-Hi-Hat-4.wav',
+		'Closed-Hi-Hat-5.wav',
+		'Closed-Hi-Hat-6.wav',
+		'Closed-Hi-Hat-7.wav',
+		'Ensoniq-SQ-1-Closed-Hi-Hat.wav'
 	]
 };
 
@@ -40,10 +46,13 @@ const openHat = {
 	name: "open-hat",
 	humanReadableName: "Open Hat",
 	sounds: [
-		'E-Mu-Proteus-FX-Wacky-Snare.wav',
-		'Ensoniq-ESQ-1-Snare-2.wav',
-		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'Ensoniq-SQ-1-Open-Hi-Hat.wav',
+		'Kawai-K1r-Open-Hi-Hat.wav',
+		'Korg-M1-Open-Hi-Hat.wav',
+		'Korg-N1R-Open-Hi-Hat.wav',
+		'Korg-NS5R-Open-Hi-Hat.wav',
+		'Korg-NS5R-Power-Open-Hi-Hat.wav',
+		'M-Audio-Venom-Open-Hi-Hat.wav'
 	]
 };
 
@@ -51,10 +60,16 @@ const toms = {
 	name: "toms",
 	humanReadableName: "Toms",
 	sounds: [
-		'E-Mu-Proteus-FX-Wacky-Snare.wav',
-		'Ensoniq-ESQ-1-Snare-2.wav',
-		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'Electro-Tom.wav',
+		'Electronic-Tom-1.wav',
+		'Electronic-Tom-2.wav',
+		'Electronic-Tom-3.wav',
+		'Electronic-Tom-4.wav',
+		'Ensoniq-ESQ-1-Hi-Mid-Synth-Tom.wav',
+		'Ensoniq-ESQ-1-Hi-Synth-Tom.wav',
+		'Ensoniq-ESQ-1-Low-Mid-Synth-Tom.wav',
+		'Ensoniq-ESQ-1-Low-Synth-Tom.wav',
+		'Floor-Tom-1.wav'
 	]
 };
 
@@ -62,21 +77,31 @@ const percussion = {
 	name: "percussion",
 	humanReadableName: "Percussion",
 	sounds: [
-		'E-Mu-Proteus-FX-Wacky-Snare.wav',
-		'Ensoniq-ESQ-1-Snare-2.wav',
-		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'Bamboo.wav',
+		'Bottle.wav',
+		'Clap-1.wav',
+		'Clap-2.wav',
+		'Clap-3.wav',
+		'Cowbell-1.wav',
+		'Doumbek-Doum.wav',
+		'Hand-Drum.wav',
+		'Kawai-K11-Sleigh-Bells.wav',
+		'Korg-N1R-High-Wood-Block.wav'
 	]
 };
 
 const sampleFx = {
-	name: "sample/fx",
+	name: "sample-fx",
 	humanReadableName: "Sample/FX",
 	sounds: [
-		'E-Mu-Proteus-FX-Wacky-Snare.wav',
-		'Ensoniq-ESQ-1-Snare-2.wav',
-		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'8-Bit-Noise-1.wav',
+		'8-Bit-Noise-2.wav',
+		'8-Bit-Noise-3.wav',
+		'Casio-MT-600-Typhoon-Sound.wav',
+		'Digital-Seashore.wav',
+		'Flowing-Water.wav',
+		'M-Audio-Venom-8Bit-Tremo-C4.wav',
+		'M-Audio-Venom-Disintegr8-C3.wav'
 	]
 };
 
@@ -84,10 +109,16 @@ const synth = {
 	name: "synth",
 	humanReadableName: "Synth",
 	sounds: [
-		'E-Mu-Proteus-FX-Wacky-Snare.wav',
-		'Ensoniq-ESQ-1-Snare-2.wav',
-		'Ensoniq-ESQ-1-Snare.wav',
-		'Ensoniq-VFX-SD-Snare.wav'
+		'1980s-Casio-Celesta-C5.wav',
+		'1980s-Casio-Harpsichord-C5.wav',
+		'Alesis-Fusion-Tango-Accordion-C5.wav',
+		'Alesis-Fusion-Tubular-Bells-C6.wav',
+		'Casio-MT-600-Fantasy-C3.wav',
+		'Casio-MT-600-Koto-C5.wav',
+		'Casio-MT-600-Synth-Bells-C3.wav',
+		'Casio-MT-600-Synth-Celesta-C4.wav',
+		'E-Mu-Proteus-FX-CosmoBel-C3.wav',
+		'E-Mu-Proteus-FX-MusicBox-C4.wav'
 	]
 };
 

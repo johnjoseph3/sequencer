@@ -14,6 +14,8 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 
 	$scope.selectedSounds = [];
 
+	// FIXME Pull sound into a class
+
 	Sequencer.getSounds()
 		.then(function(sounds){
 			$scope.sounds = [];
