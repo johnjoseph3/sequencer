@@ -11,6 +11,7 @@
 				<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
 			</div>
 			<div class="clear-pattern-container">
+				<button ng-click="showSelectMenus = !showSelectMenus">Sounds</button>
 				<button ng-click="clearPattern()">Clear</button>
 			</div>
 		</div>
@@ -22,9 +23,9 @@
 					</div>
 				</div>
 
-				<div class="row-label-column">
-					<div class="row-labels">
-						<div class="label" ng-repeat="sound in sounds track by $index" ng-init="outerIndex = $index">
+				<div class="select-sound-column">
+					<div ng-show="showSelectMenus" class="row-select-sound">
+						<div class="select-menu-container" ng-repeat="sound in sounds track by $index" ng-init="outerIndex = $index">
 							<select ng-model="selectedSounds[$index]" ng-change="changeSound(sound, $index, outerIndex)">
 								<option ng-repeat="alternateSound in sound.alternateSounds track by $index">{{alternateSound}}</option>
 							</select>

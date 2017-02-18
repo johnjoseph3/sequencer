@@ -161,14 +161,14 @@ button {
 	}
 }
 
-.row-label-column {
+.row-label-column, .select-sound-column {
 	flex: 0.5;
-	.row-labels {
+	.row-labels, .row-select-sound {
 		display: flex;
 		flex-direction: column;
 		color: white;
 		height: 100%;
-		.label {
+		.label, .select-menu-container {
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
@@ -176,6 +176,9 @@ button {
 			margin-right: 4px;
 			height: 35px;
 			margin-top: 10px;
+			select {
+				max-width: 100px;
+			}
 		}
 	}
 }
