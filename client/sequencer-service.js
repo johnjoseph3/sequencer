@@ -46,13 +46,13 @@ angular.module('app').service('Sequencer', function($location) {
 	this.getSounds = function() {
 		return Promise.all([
 			getAudioBuffer(`${url}/kick/${availableSounds.kick.sounds[0]}`),
-			getAudioBuffer(`${url}/snare.mp3`),
-			getAudioBuffer(`${url}/hit-hat.mp3`),
-			getAudioBuffer(`${url}/crash.mp3`),
-			getAudioBuffer(`${url}/rim-shot.mp3`),
-			getAudioBuffer(`${url}/clave.mp3`),
-			getAudioBuffer(`${url}/maracas.mp3`),
-			getAudioBuffer(`${url}/clap.mp3`)
+			getAudioBuffer(`${url}/snare/${availableSounds.snare.sounds[0]}`),
+			getAudioBuffer(`${url}/open-hat/${availableSounds.openHat.sounds[0]}`),
+			getAudioBuffer(`${url}/closed-hat/${availableSounds.closedHat.sounds[0]}`),
+			getAudioBuffer(`${url}/toms/${availableSounds.toms.sounds[0]}`),
+			getAudioBuffer(`${url}/percussion/${availableSounds.percussion.sounds[0]}`),
+			getAudioBuffer(`${url}/sample-fx/${availableSounds.sampleFx.sounds[0]}`),
+			getAudioBuffer(`${url}/synth/${availableSounds.synth.sounds[0]}`)
 		]);
 	};
 
