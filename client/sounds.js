@@ -109,10 +109,6 @@ const synth = {
 	name: "synth",
 	humanReadableName: "Synth",
 	sounds: [
-		'1980s-Casio-Celesta-C5.wav',
-		'1980s-Casio-Harpsichord-C5.wav',
-		'Alesis-Fusion-Tango-Accordion-C5.wav',
-		'Alesis-Fusion-Tubular-Bells-C6.wav',
 		'Casio-MT-600-Fantasy-C3.wav',
 		'Casio-MT-600-Koto-C5.wav',
 		'Casio-MT-600-Synth-Bells-C3.wav',
