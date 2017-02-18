@@ -67,14 +67,13 @@ angular.module('app').service('Sequencer', function($location) {
 	this.updateBeat = function(sound, beatIndex) {
 
 		let soundsAtBeatIndex = pattern[beatIndex];
-		let soundInBeatIndex = soundsAtBeatIndex.find(soundInBeatIndex => soundInBeatIndex === sound);
+		let soundInBeatIndex = soundsAtBeatIndex.find(soundInBeatIndex => soundInBeatIndex.name === sound.name);
 
 		if(soundInBeatIndex) {
-			pattern[beatIndex] = soundsAtBeatIndex.filter(existingSound => existingSound != sound);
+			pattern[beatIndex] = soundsAtBeatIndex.filter(existingSound => existingSound.name != sound.name);
 		} else {
 			pattern[beatIndex].push(sound);
 		}
-
 		return pattern;
 	};
 

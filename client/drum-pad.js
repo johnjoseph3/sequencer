@@ -48,7 +48,7 @@ angular.module('app').controller('drumPad', ['$scope', 'Sequencer', ($scope, Seq
 	$scope.beatIsPlaying = false;
 
 	$scope.isSoundInBeat = (sound, beat) => {
-		let soundInBeat = beat.find(soundInBeatIndex => soundInBeatIndex === sound);
+		let soundInBeat = beat.find(soundInBeatIndex => soundInBeatIndex.name === sound.name);
 		if(soundInBeat) {
 			return true;
 		}
