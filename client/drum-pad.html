@@ -1,11 +1,11 @@
 <div ng-controller="drumPad" class="page-content">
 	<div class="drum-pad-container">
 		<div class="controls">
-			<div
+			<button
 				class="play-pause-button"
 				ng-class="beatIsPlaying ? 'pause' : 'play'"
 				ng-click="startOrStopBeat()">
-			</div>
+			</button>
 			<div class="bpm">
 				<label>BPM:</label>
 				<input type="number" class="tempo" ng-model="tempo" min="60" max="240"></input>
