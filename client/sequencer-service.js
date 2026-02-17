@@ -94,6 +94,11 @@ angular.module('app').service('Sequencer', function($location) {
 	};
 
 	this.start = function(){
+		cancelAnimationFrame(requestId);
+
+		if (audioContext.state === 'suspended') {
+			audioContext.resume();
+		}
 		noteTime = 0.0;
 		startTime = audioContext.currentTime + 0.2;
 		rhythmIndex = 0;
